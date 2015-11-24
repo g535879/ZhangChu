@@ -6,8 +6,23 @@
 //  Copyright © 2015年 ____LHH_____. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "BasicModel.h"
 
-@interface CookBookDetailModel : NSObject
+@interface CookBookDetailModel : BasicModel
+
+/**
+    图片路径
+ */
+proStr(imagePathThumbnails);
+
+/**
+    食物名
+ */
+proStr(name);
+
+/**
+    食物Id
+ */
+proStr(vegetable_id);
 
 @end

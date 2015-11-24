@@ -6,8 +6,22 @@
 //  Copyright © 2015年 ____LHH_____. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "BasicModel.h"
 
-@interface CookBookAdModel : NSObject
+@interface CookBookAdModel : BasicModel
 
+/**
+    当前广告ID
+ */
+proInteger(adId);
+
+/**
+    图片地址
+ */
+proStr(imageFilename);
+
+/**
+    类型
+ */
+proInteger(type);
 @end

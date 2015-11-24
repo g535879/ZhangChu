@@ -10,4 +10,9 @@
 
 @interface UIViewController (AlertView)
 
+/**
+ 弹窗显示网络状态
+ */
+- (void)showMyAlertView:(NSString *)str;
+
 @end

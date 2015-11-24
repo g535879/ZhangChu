@@ -7,11 +7,27 @@
 //
 
 #import "CookTableViewCell.h"
+#import "CookBookDetailModel.h"
 
 @implementation CookTableViewCell
 
 - (void)awakeFromNib {
-    // Initialization code
+
+
+}
+
+- (void)setModel:(CookBookCategoryModel *)model {
+    [self.categoryImage setImageWithURL:[NSURL URLWithString:model.imageFilename]];
+    self.categoryTitle.text = model.name;
+    
+    NSInteger index = 3 <= model.vegetables.count ? 3 : model.vegetables.count;
+    for (int i = 0; i < index; i++) {
+        CookBookDetailModel * dModel = model.vegetables[i];
+        UIImageView *imageView = (UIImageView *)[self viewWithTag:100+i];
+        UILabel * label = (UILabel *)[self viewWithTag:1000 + i];
+        [imageView setImageWithURL:[NSURL URLWithString:dModel.imagePathThumbnails]];
+        label.text = dModel.name;
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

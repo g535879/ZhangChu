@@ -7,6 +7,12 @@
 //
 
 #import "AppDelegate.h"
+#import "MainTabBarController.h"
+#import "CookBookViewController.h"
+#import "FindViewController.h"
+#import "AboutMeViewController.h"
+#import "SquareViewController.h"
+#import "MyNavigationController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +23,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = [self createTabBar];
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
@@ -40,6 +51,45 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - 创建标签栏
+- (MainTabBarController *)createTabBar {
+    CookBookViewController * cookBookVC = [[CookBookViewController alloc] init];
+    FindViewController * findVC = [[FindViewController alloc] init];
+    SquareViewController * squareVC = [[SquareViewController alloc] init];
+    AboutMeViewController * aboutMeVC = [[AboutMeViewController alloc] init];
+
+    
+    MyNavigationController * cookBookNVC = [[MyNavigationController alloc] initWithRootViewController:cookBookVC];
+    MyNavigationController * findNVC = [[MyNavigationController alloc] initWithRootViewController:findVC];
+    MyNavigationController * squareNVC = [[MyNavigationController alloc] initWithRootViewController:squareVC];
+    MyNavigationController * aboutMeNVC = [[MyNavigationController alloc] initWithRootViewController:aboutMeVC];
+
+    
+    cookBookNVC.title = @"菜谱";
+    findNVC.title = @"发现";
+    squareNVC.title = @"广场";
+    aboutMeNVC.title = @"我的";
+
+    
+    cookBookNVC.tabBarItem.selectedImage = imageNameRenderStr(@"tab_cookbook_hl");
+    cookBookNVC.tabBarItem.image = imageNameRenderStr(@"tab_cookbook");
+    
+    findNVC.tabBarItem.selectedImage = imageNameRenderStr(@"tab_explore_hl");
+    findNVC.tabBarItem.image = imageNameRenderStr(@"tab_explore");
+    
+    
+    squareNVC.tabBarItem.selectedImage = imageNameRenderStr(@"tab_plaza_hl");
+    squareNVC.tabBarItem.image = imageNameRenderStr(@"tab_plaza");
+    
+    aboutMeNVC.tabBarItem.selectedImage = imageNameRenderStr(@"tab_aboutme_hl");
+    aboutMeNVC.tabBarItem.image = imageNameRenderStr(@"tab_aboutme");
+    
+    MainTabBarController * main = [[MainTabBarController alloc ]init];
+    main.viewControllers = @[cookBookNVC,findNVC,squareNVC,aboutMeNVC];
+    
+    return main;
 }
 
 @end

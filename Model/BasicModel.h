@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+#define proStr(str) @property (nonatomic, copy) NSString * (str)
+
+#define proArr(arr) @property (nonatomic, copy) NSArray * (arr)
+
+#define proInteger(i) @property (nonatomic, assign) NSInteger (i)
+
+#define proMuArr(muArr) @property (nonatomic, strong) NSMutableArray * (muArr)
+
 @interface BasicModel : NSObject
 
 @end

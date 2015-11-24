@@ -8,6 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol returnClickTag <NSObject>
+
+/**
+ 返回选中的视图的tag
+ */
+- (void)returnClickTag:(NSInteger) picIndex;
+
+@end
 @interface CustomScrollView : UIView
+
+@property (assign, nonatomic) id<returnClickTag> delegate;
+
+//图片数据源
+@property (copy, nonatomic) NSArray * imagesArray;
+
 
 @end

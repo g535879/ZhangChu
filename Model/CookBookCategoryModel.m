@@ -7,7 +7,29 @@
 //
 
 #import "CookBookCategoryModel.h"
+#import "CookBookDetailModel.h"
 
 @implementation CookBookCategoryModel
 
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
+    if ([key isEqualToString:@"vegetableList"]) {
+        
+        for (NSDictionary  * dic in value) {
+            
+            CookBookDetailModel * model = [[CookBookDetailModel alloc] init];
+            [model setValuesForKeysWithDictionary:dic];
+            [self.vegetables addObject:model];
+            
+        }
+    }
+}
+
+- (NSMutableArray *)vegetables {
+    
+    if (!_vegetables) {
+        _vegetables = [@[] mutableCopy];
+    }
+    
+    return _vegetables;
+}
 @end

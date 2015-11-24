@@ -9,7 +9,63 @@
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+
+
+
+#ifdef __OBJC__
+
+#import "AFNetworking.h"
+
+#import "UIImageView+AFNetworking.h"
+
+#import "MyCustomView.h"
+
+#import "HeadFile.h"
+
+#import "NetManager.h"
+
+#import "UIViewController+AlertView.h"
+
+#define viewControllerTitleString @"掌厨 - 全球最大的视频厨房"
+
+#define notNetWorkString @"暂无网络,请检查网络状态"
+
+//检测网络状态
+#define isnetWorkNotificationYes @"isnetWorkNotificationYes"
+#define isnetWorkNotificationNo @"isnetWorkNotificationNo"
+
+#define imageStar(str) [UIImage imageNamed:(str)]
+
+#define imageNameRenderStr(str) [[UIImage imageNamed:(str)] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+
+#define fontSize14 [UIFont systemFontOfSize:14.0f]
+
+#define screen_Width [UIScreen mainScreen].bounds.size.width
+#define screen_Height [UIScreen mainScreen].bounds.size.height
+
+#define tabBar_Height 49.0f
+#define nav_Height 64.0f
+
+//我们需要做适配
+//首先想到一个比例尺 frame值来做适配
+//首先需要一个基数 以什么屏幕作为参照物
+#define iphone6P 414.0f
+#define iphone4s 320.0f
+
+//缩放比例尺
+#define scale_screen (screen_Width / iphone6P)
+
+
+#endif
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+
+
+
+
 
 #endif /* PrefixHeader_pch */

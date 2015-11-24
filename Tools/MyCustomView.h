@@ -10,4 +10,9 @@
 
 @interface MyCustomView : NSObject
 
+/**
+    生成label
+ */
++ (UILabel *)createLabelWithFrame:(CGRect)frame textString:(NSString *)text withFont:(float)fontSize textColor:(UIColor *)color;
+
 @end

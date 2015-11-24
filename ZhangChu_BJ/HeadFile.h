@@ -27,7 +27,7 @@
  phonetype=1
  */
 
-//http://121.41.117.95/HandheldKitchen/api/home/tblHomepageVegetable!getHomeVegetableList.do?
+//http://121.41.88.115/HandheldKitchen/api/home/tblHomepageVegetable!getHomeVegetableList.do?
 #define URL_COOKBOOK @"/HandheldKitchen/api/home/tblHomepageVegetable!getHomeVegetableList.do?"
 
 
