@@ -1,15 +1,13 @@
 //
-//  ViewController.h
+//  UIViewController+AlertView.h
 //  ZhangChu_BJ
 //
-//  Created by LongHuanHuan on 15/11/23.
+//  Created by 古玉彬 on 15/11/24.
 //  Copyright © 2015年 ____LHH_____. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface UIViewController (AlertView)
 
 @end
-
