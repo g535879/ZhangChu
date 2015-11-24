@@ -19,6 +19,7 @@
 @property (assign, nonatomic) float viewWidth;       //视图宽度
 @property (assign, nonatomic) float viewHeight;    //视图高度
 @property (assign, nonatomic) NSInteger currentPicIndex; //当前图片下标
+@property (strong, nonatomic) NSTimer * autoRunTimer; //自动滚动定时器
 @end
 
 @implementation CustomScrollView
@@ -72,6 +73,7 @@
     UIImageView * imageView = [[UIImageView alloc] initWithFrame:frame];
     [imageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pictouch:)]];
     imageView.tag = tag;
+    imageView.userInteractionEnabled = YES;
     return imageView;
 }
 
@@ -97,7 +99,45 @@
         
         //显示
         [self initLayout];
+        
+
     }
+}
+
+- (NSTimer *)autoRunTimer {
+    
+    if (!_autoRunTimer) {
+        _autoRunTimer = [NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(netxPhoto) userInfo:nil repeats:YES];
+        [_autoRunTimer setFireDate:[NSDate distantFuture]];
+    }
+    
+    return _autoRunTimer;
+}
+
+
+#pragma mark - 是否自动滚动
+- (void)autoScroll {
+    
+    if (self.isAutoScroll) {
+        [self.autoRunTimer setFireDate:[NSDate distantPast]];
+    }
+}
+
+#pragma mark - nextPhoto 
+- (void)netxPhoto {
+    
+    [UIView animateWithDuration:1.0f animations:^{
+        
+        self.scrollView.contentOffset = CGPointMake(self.viewWidth * 2, 0);
+    }completion:^(BOOL finished) {
+        
+        if (finished) {
+            
+            self.currentPicIndex = [self getQuerePicIndex:self.currentPicIndex + 1];
+            self.scrollView.contentOffset = CGPointMake(self.viewWidth, 0);
+            [self updateImage];
+        }
+    }];
 }
 
 #pragma mark - 初始化显示
@@ -105,9 +145,15 @@
     
     [self updateImage];
     
+    [self performSelector:@selector(autoScroll) withObject:nil afterDelay:3.0f];
+//    dispatch_async(dispatch_queue_create("myQueue", DISPATCH_QUEUE_SERIAL), ^{
+//        [NSThread sleepForTimeInterval:2.0f];
+//        //是否自动滚动
+//        [self performSelectorOnMainThread:@selector(autoScroll) withObject:nil waitUntilDone:YES];
+//    });
     
 }
-
+#pragma mark -  update image
 //更新图片
 - (void)updateImage {
     
@@ -132,6 +178,7 @@
 
 #pragma mark - scrollview delegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+   
     CGFloat offsetY = scrollView.contentOffset.x;
     
     if (fabs(offsetY-self.viewWidth) < self.viewWidth / 2) { //偏移量小于一半
@@ -149,6 +196,25 @@
     [self.scrollView setContentOffset:CGPointMake(self.viewWidth, 0)];
     //更新图片
     [self updateImage];
+    
+    //开启定时器
+    [self autoScroll];
+    
+    
 }
 
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+    //暂停定时器
+    [self.autoRunTimer setFireDate:[NSDate distantFuture]];
+}
+#pragma mark - 开始自动滚动
+- (void)startScroll{
+    
+}
+
+- (void)dealloc {
+    
+    //销毁定时器
+    [self.autoRunTimer invalidate];
+}
 @end

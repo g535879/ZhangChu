@@ -23,5 +23,10 @@
 //图片数据源
 @property (copy, nonatomic) NSArray * imagesArray;
 
+/**
+    是否自动滚动。default is no
+ */
+
+@property (assign, nonatomic) BOOL isAutoScroll;
 
 @end

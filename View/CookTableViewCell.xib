@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eIf-Yn-2Ru">
-                        <rect key="frame" x="10" y="5" width="358" height="228"/>
+                        <rect key="frame" x="20" y="5" width="338" height="228"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wOT-UV-gYY">
                                 <rect key="frame" x="10" y="12" width="38" height="38"/>
@@ -36,7 +36,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="查看全部" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vrm-Zb-wwA">
-                                <rect key="frame" x="245" y="21" width="68" height="21"/>
+                                <rect key="frame" x="225" y="21" width="68" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="68" id="MNH-Pr-ygE"/>
                                     <constraint firstAttribute="height" constant="21" id="mli-F0-Hxt"/>
@@ -46,13 +46,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="viewmore" translatesAutoresizingMaskIntoConstraints="NO" id="czq-73-vXV">
-                                <rect key="frame" x="323" y="18" width="25" height="25"/>
+                                <rect key="frame" x="303" y="18" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="czq-73-vXV" secondAttribute="height" multiplier="1:1" id="Jy1-om-iSU"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ogy-gK-kfd">
-                                <rect key="frame" x="10" y="55" width="106" height="134"/>
+                                <rect key="frame" x="10" y="55" width="99" height="134"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -61,7 +61,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <imageView userInteractionEnabled="NO" tag="101" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jdy-0D-ija">
-                                <rect key="frame" x="126" y="55" width="106" height="134"/>
+                                <rect key="frame" x="119" y="55" width="100" height="134"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -70,7 +70,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <imageView userInteractionEnabled="NO" tag="102" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oug-ka-KK6">
-                                <rect key="frame" x="242" y="55" width="106" height="134"/>
+                                <rect key="frame" x="229" y="55" width="99" height="134"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -79,7 +79,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我是内容" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XzN-f2-kNG">
-                                <rect key="frame" x="10" y="189" width="106" height="40"/>
+                                <rect key="frame" x="10" y="189" width="99" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="BWH-pC-GbH"/>
                                 </constraints>
@@ -88,7 +88,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" tag="1002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我还是内容" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NU3-Vl-2ah">
-                                <rect key="frame" x="242" y="189" width="106" height="35"/>
+                                <rect key="frame" x="229" y="189" width="99" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="zHt-gu-im8"/>
                                 </constraints>
@@ -102,7 +102,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我也是内容" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggF-fO-agD">
-                                <rect key="frame" x="126" y="189" width="106" height="40"/>
+                                <rect key="frame" x="119" y="189" width="100" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="39g-oS-avh"/>
                                 </constraints>
@@ -184,11 +184,11 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="eIf-Yn-2Ru" secondAttribute="trailing" constant="10" id="JZr-Bu-xRq"/>
+                    <constraint firstAttribute="trailing" secondItem="eIf-Yn-2Ru" secondAttribute="trailing" constant="20" id="JZr-Bu-xRq"/>
                     <constraint firstAttribute="bottom" secondItem="eIf-Yn-2Ru" secondAttribute="bottom" constant="5" id="aHk-UP-t4Y"/>
                     <constraint firstItem="wOT-UV-gYY" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="1:10" id="k2W-TZ-bmI"/>
                     <constraint firstItem="eIf-Yn-2Ru" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="l4q-Xv-dZn"/>
-                    <constraint firstItem="eIf-Yn-2Ru" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="vdq-hd-2Ee"/>
+                    <constraint firstItem="eIf-Yn-2Ru" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="vdq-hd-2Ee"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

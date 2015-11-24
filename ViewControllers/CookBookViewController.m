@@ -250,6 +250,8 @@
     // 广告栏
     self.adScrollView = [[CustomScrollView alloc] initWithFrame:CGRectMake(10, 5, screen_Width-20, self.headView.frame.size.height-5)];
     
+    self.adScrollView.isAutoScroll = YES;
+    
     [self.headView addSubview:self.adScrollView];
     
 }
