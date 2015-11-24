@@ -13,6 +13,19 @@
 		AD42E51B1C02B83800764EC7 /* FindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD42E51A1C02B83800764EC7 /* FindViewController.m */; settings = {ASSET_TAGS = (); }; };
 		AD42E51E1C02B86100764EC7 /* SquareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD42E51D1C02B86100764EC7 /* SquareViewController.m */; settings = {ASSET_TAGS = (); }; };
 		AD42E5211C02B88200764EC7 /* AboutMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD42E5201C02B88200764EC7 /* AboutMeViewController.m */; settings = {ASSET_TAGS = (); }; };
+		AD5B60341C04395300BC28C9 /* CookBookTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5B60321C04395300BC28C9 /* CookBookTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		AD5B60351C04395300BC28C9 /* CookBookTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD5B60331C04395300BC28C9 /* CookBookTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		AD5B604D1C045FF000BC28C9 /* JGProgressHUD Resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AD5B60371C045FF000BC28C9 /* JGProgressHUD Resources.bundle */; settings = {ASSET_TAGS = (); }; };
+		AD5B604E1C045FF000BC28C9 /* JGProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5B603A1C045FF000BC28C9 /* JGProgressHUD.m */; settings = {ASSET_TAGS = (); }; };
+		AD5B604F1C045FF000BC28C9 /* JGProgressHUDAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5B603C1C045FF000BC28C9 /* JGProgressHUDAnimation.m */; settings = {ASSET_TAGS = (); }; };
+		AD5B60501C045FF000BC28C9 /* JGProgressHUDErrorIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5B603E1C045FF000BC28C9 /* JGProgressHUDErrorIndicatorView.m */; settings = {ASSET_TAGS = (); }; };
+		AD5B60511C045FF000BC28C9 /* JGProgressHUDFadeAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5B60401C045FF000BC28C9 /* JGProgressHUDFadeAnimation.m */; settings = {ASSET_TAGS = (); }; };
+		AD5B60521C045FF000BC28C9 /* JGProgressHUDFadeZoomAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5B60421C045FF000BC28C9 /* JGProgressHUDFadeZoomAnimation.m */; settings = {ASSET_TAGS = (); }; };
+		AD5B60531C045FF000BC28C9 /* JGProgressHUDIndeterminateIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5B60441C045FF000BC28C9 /* JGProgressHUDIndeterminateIndicatorView.m */; settings = {ASSET_TAGS = (); }; };
+		AD5B60541C045FF000BC28C9 /* JGProgressHUDIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5B60461C045FF000BC28C9 /* JGProgressHUDIndicatorView.m */; settings = {ASSET_TAGS = (); }; };
+		AD5B60551C045FF000BC28C9 /* JGProgressHUDPieIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5B60481C045FF000BC28C9 /* JGProgressHUDPieIndicatorView.m */; settings = {ASSET_TAGS = (); }; };
+		AD5B60561C045FF000BC28C9 /* JGProgressHUDRingIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5B604A1C045FF000BC28C9 /* JGProgressHUDRingIndicatorView.m */; settings = {ASSET_TAGS = (); }; };
+		AD5B60571C045FF000BC28C9 /* JGProgressHUDSuccessIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5B604C1C045FF000BC28C9 /* JGProgressHUDSuccessIndicatorView.m */; settings = {ASSET_TAGS = (); }; };
 		AD9FA0571C02F1CA000AD803 /* MyCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD9FA0561C02F1CA000AD803 /* MyCustomView.m */; settings = {ASSET_TAGS = (); }; };
 		AD9FA05A1C02F5C3000AD803 /* MyNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD9FA0591C02F5C3000AD803 /* MyNavigationController.m */; settings = {ASSET_TAGS = (); }; };
 		AD9FA0621C031AEA000AD803 /* CustomScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD9FA0611C031AEA000AD803 /* CustomScrollView.m */; settings = {ASSET_TAGS = (); }; };
@@ -79,6 +92,31 @@
 		AD42E51D1C02B86100764EC7 /* SquareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SquareViewController.m; sourceTree = "<group>"; };
 		AD42E51F1C02B88200764EC7 /* AboutMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutMeViewController.h; sourceTree = "<group>"; };
 		AD42E5201C02B88200764EC7 /* AboutMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutMeViewController.m; sourceTree = "<group>"; };
+		AD5B60311C04395300BC28C9 /* CookBookTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CookBookTableViewCell.h; sourceTree = "<group>"; };
+		AD5B60321C04395300BC28C9 /* CookBookTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CookBookTableViewCell.m; sourceTree = "<group>"; };
+		AD5B60331C04395300BC28C9 /* CookBookTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CookBookTableViewCell.xib; sourceTree = "<group>"; };
+		AD5B60371C045FF000BC28C9 /* JGProgressHUD Resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "JGProgressHUD Resources.bundle"; sourceTree = "<group>"; };
+		AD5B60381C045FF000BC28C9 /* JGProgressHUD-Defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JGProgressHUD-Defines.h"; sourceTree = "<group>"; };
+		AD5B60391C045FF000BC28C9 /* JGProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUD.h; sourceTree = "<group>"; };
+		AD5B603A1C045FF000BC28C9 /* JGProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUD.m; sourceTree = "<group>"; };
+		AD5B603B1C045FF000BC28C9 /* JGProgressHUDAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUDAnimation.h; sourceTree = "<group>"; };
+		AD5B603C1C045FF000BC28C9 /* JGProgressHUDAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUDAnimation.m; sourceTree = "<group>"; };
+		AD5B603D1C045FF000BC28C9 /* JGProgressHUDErrorIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUDErrorIndicatorView.h; sourceTree = "<group>"; };
+		AD5B603E1C045FF000BC28C9 /* JGProgressHUDErrorIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUDErrorIndicatorView.m; sourceTree = "<group>"; };
+		AD5B603F1C045FF000BC28C9 /* JGProgressHUDFadeAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUDFadeAnimation.h; sourceTree = "<group>"; };
+		AD5B60401C045FF000BC28C9 /* JGProgressHUDFadeAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUDFadeAnimation.m; sourceTree = "<group>"; };
+		AD5B60411C045FF000BC28C9 /* JGProgressHUDFadeZoomAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUDFadeZoomAnimation.h; sourceTree = "<group>"; };
+		AD5B60421C045FF000BC28C9 /* JGProgressHUDFadeZoomAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUDFadeZoomAnimation.m; sourceTree = "<group>"; };
+		AD5B60431C045FF000BC28C9 /* JGProgressHUDIndeterminateIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUDIndeterminateIndicatorView.h; sourceTree = "<group>"; };
+		AD5B60441C045FF000BC28C9 /* JGProgressHUDIndeterminateIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUDIndeterminateIndicatorView.m; sourceTree = "<group>"; };
+		AD5B60451C045FF000BC28C9 /* JGProgressHUDIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUDIndicatorView.h; sourceTree = "<group>"; };
+		AD5B60461C045FF000BC28C9 /* JGProgressHUDIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUDIndicatorView.m; sourceTree = "<group>"; };
+		AD5B60471C045FF000BC28C9 /* JGProgressHUDPieIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUDPieIndicatorView.h; sourceTree = "<group>"; };
+		AD5B60481C045FF000BC28C9 /* JGProgressHUDPieIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUDPieIndicatorView.m; sourceTree = "<group>"; };
+		AD5B60491C045FF000BC28C9 /* JGProgressHUDRingIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUDRingIndicatorView.h; sourceTree = "<group>"; };
+		AD5B604A1C045FF000BC28C9 /* JGProgressHUDRingIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUDRingIndicatorView.m; sourceTree = "<group>"; };
+		AD5B604B1C045FF000BC28C9 /* JGProgressHUDSuccessIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUDSuccessIndicatorView.h; sourceTree = "<group>"; };
+		AD5B604C1C045FF000BC28C9 /* JGProgressHUDSuccessIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUDSuccessIndicatorView.m; sourceTree = "<group>"; };
 		AD9FA0551C02F1CA000AD803 /* MyCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCustomView.h; sourceTree = "<group>"; };
 		AD9FA0561C02F1CA000AD803 /* MyCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCustomView.m; sourceTree = "<group>"; };
 		AD9FA0581C02F5C3000AD803 /* MyNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNavigationController.h; sourceTree = "<group>"; };
@@ -193,6 +231,35 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		AD5B60361C045FF000BC28C9 /* JGProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				AD5B60371C045FF000BC28C9 /* JGProgressHUD Resources.bundle */,
+				AD5B60381C045FF000BC28C9 /* JGProgressHUD-Defines.h */,
+				AD5B60391C045FF000BC28C9 /* JGProgressHUD.h */,
+				AD5B603A1C045FF000BC28C9 /* JGProgressHUD.m */,
+				AD5B603B1C045FF000BC28C9 /* JGProgressHUDAnimation.h */,
+				AD5B603C1C045FF000BC28C9 /* JGProgressHUDAnimation.m */,
+				AD5B603D1C045FF000BC28C9 /* JGProgressHUDErrorIndicatorView.h */,
+				AD5B603E1C045FF000BC28C9 /* JGProgressHUDErrorIndicatorView.m */,
+				AD5B603F1C045FF000BC28C9 /* JGProgressHUDFadeAnimation.h */,
+				AD5B60401C045FF000BC28C9 /* JGProgressHUDFadeAnimation.m */,
+				AD5B60411C045FF000BC28C9 /* JGProgressHUDFadeZoomAnimation.h */,
+				AD5B60421C045FF000BC28C9 /* JGProgressHUDFadeZoomAnimation.m */,
+				AD5B60431C045FF000BC28C9 /* JGProgressHUDIndeterminateIndicatorView.h */,
+				AD5B60441C045FF000BC28C9 /* JGProgressHUDIndeterminateIndicatorView.m */,
+				AD5B60451C045FF000BC28C9 /* JGProgressHUDIndicatorView.h */,
+				AD5B60461C045FF000BC28C9 /* JGProgressHUDIndicatorView.m */,
+				AD5B60471C045FF000BC28C9 /* JGProgressHUDPieIndicatorView.h */,
+				AD5B60481C045FF000BC28C9 /* JGProgressHUDPieIndicatorView.m */,
+				AD5B60491C045FF000BC28C9 /* JGProgressHUDRingIndicatorView.h */,
+				AD5B604A1C045FF000BC28C9 /* JGProgressHUDRingIndicatorView.m */,
+				AD5B604B1C045FF000BC28C9 /* JGProgressHUDSuccessIndicatorView.h */,
+				AD5B604C1C045FF000BC28C9 /* JGProgressHUDSuccessIndicatorView.m */,
+			);
+			path = JGProgressHUD;
+			sourceTree = "<group>";
+		};
 		AD9FA0541C02F139000AD803 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +310,9 @@
 				AD9FA0A21C0347B3000AD803 /* CookTableViewCell.xib */,
 				AD9FA0601C031AEA000AD803 /* CustomScrollView.h */,
 				AD9FA0611C031AEA000AD803 /* CustomScrollView.m */,
+				AD5B60311C04395300BC28C9 /* CookBookTableViewCell.h */,
+				AD5B60321C04395300BC28C9 /* CookBookTableViewCell.m */,
+				AD5B60331C04395300BC28C9 /* CookBookTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -374,6 +444,7 @@
 		CE948B8C1C02A9E3008C6757 /* 3rc */ = {
 			isa = PBXGroup;
 			children = (
+				AD5B60361C045FF000BC28C9 /* JGProgressHUD */,
 				AD9FA0801C033F1C000AD803 /* AFNetworking */,
 				AD9FA0631C032B3B000AD803 /* UIKit+AFNetworking */,
 			);
@@ -483,6 +554,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD5B60351C04395300BC28C9 /* CookBookTableViewCell.xib in Resources */,
+				AD5B604D1C045FF000BC28C9 /* JGProgressHUD Resources.bundle in Resources */,
 				CE948B681C02A388008C6757 /* LaunchScreen.storyboard in Resources */,
 				CE948B651C02A388008C6757 /* Assets.xcassets in Resources */,
 				AD9FA0A41C0347B3000AD803 /* CookTableViewCell.xib in Resources */,
@@ -512,38 +585,49 @@
 			files = (
 				AD9FA09A1C033F1D000AD803 /* AFURLRequestSerialization.m in Sources */,
 				AD9FA0991C033F1D000AD803 /* AFURLConnectionOperation.m in Sources */,
+				AD5B60571C045FF000BC28C9 /* JGProgressHUDSuccessIndicatorView.m in Sources */,
 				AD42E51E1C02B86100764EC7 /* SquareViewController.m in Sources */,
 				AD9FA0621C031AEA000AD803 /* CustomScrollView.m in Sources */,
 				AD42E5181C02B81D00764EC7 /* CookBookViewController.m in Sources */,
 				AD9FA09C1C033F1D000AD803 /* AFURLSessionManager.m in Sources */,
+				AD5B60521C045FF000BC28C9 /* JGProgressHUDFadeZoomAnimation.m in Sources */,
 				AD42E5141C02B63900764EC7 /* MainTabBarController.m in Sources */,
 				AD9FA0751C032B3B000AD803 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				AD42E5111C02B5E900764EC7 /* BasicViewController.m in Sources */,
 				AD9FA0981C033F1D000AD803 /* AFSecurityPolicy.m in Sources */,
 				ADCBB5711C03FF7500F2D695 /* UIViewController+AlertView.m in Sources */,
 				AD9FA0941C033F1C000AD803 /* AFHTTPRequestOperation.m in Sources */,
+				AD5B60341C04395300BC28C9 /* CookBookTableViewCell.m in Sources */,
 				AD9FA0A71C034C52000AD803 /* CookBookDetailModel.m in Sources */,
 				AD9FA0791C032B3B000AD803 /* UIImageView+AFNetworking.m in Sources */,
 				AD9FA07F1C033240000AD803 /* NetManager.m in Sources */,
 				AD9FA07A1C032B3B000AD803 /* UIProgressView+AFNetworking.m in Sources */,
 				AD9FA07B1C032B3B000AD803 /* UIRefreshControl+AFNetworking.m in Sources */,
+				AD5B604E1C045FF000BC28C9 /* JGProgressHUD.m in Sources */,
 				AD9FA09F1C03405D000AD803 /* CookBookAdModel.m in Sources */,
+				AD5B604F1C045FF000BC28C9 /* JGProgressHUDAnimation.m in Sources */,
 				AD42E5211C02B88200764EC7 /* AboutMeViewController.m in Sources */,
 				AD9FA0781C032B3B000AD803 /* UIButton+AFNetworking.m in Sources */,
 				AD9FA0961C033F1D000AD803 /* AFHTTPSessionManager.m in Sources */,
 				AD9FA0761C032B3B000AD803 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				AD5B60531C045FF000BC28C9 /* JGProgressHUDIndeterminateIndicatorView.m in Sources */,
+				AD5B60551C045FF000BC28C9 /* JGProgressHUDPieIndicatorView.m in Sources */,
 				AD42E51B1C02B83800764EC7 /* FindViewController.m in Sources */,
 				AD9FA0571C02F1CA000AD803 /* MyCustomView.m in Sources */,
 				AD9FA0A31C0347B3000AD803 /* CookTableViewCell.m in Sources */,
 				AD9FA0951C033F1D000AD803 /* AFHTTPRequestOperationManager.m in Sources */,
+				AD5B60501C045FF000BC28C9 /* JGProgressHUDErrorIndicatorView.m in Sources */,
 				AD9FA05A1C02F5C3000AD803 /* MyNavigationController.m in Sources */,
 				AD9FA0AA1C034D21000AD803 /* CookBookCategoryModel.m in Sources */,
 				AD9FA07C1C032B3B000AD803 /* UIWebView+AFNetworking.m in Sources */,
 				CE948B5D1C02A388008C6757 /* AppDelegate.m in Sources */,
+				AD5B60561C045FF000BC28C9 /* JGProgressHUDRingIndicatorView.m in Sources */,
 				ADCBB5741C04086700F2D695 /* BasicModel.m in Sources */,
 				CE948B5A1C02A388008C6757 /* main.m in Sources */,
+				AD5B60541C045FF000BC28C9 /* JGProgressHUDIndicatorView.m in Sources */,
 				AD9FA0971C033F1D000AD803 /* AFNetworkReachabilityManager.m in Sources */,
 				AD9FA09B1C033F1D000AD803 /* AFURLResponseSerialization.m in Sources */,
+				AD5B60511C045FF000BC28C9 /* JGProgressHUDFadeAnimation.m in Sources */,
 				AD9FA0771C032B3B000AD803 /* UIAlertView+AFNetworking.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,6 +10,8 @@
 
 @interface BasicViewController ()
 
+@property (strong, nonatomic) JGProgressHUD * hud; // 加载框
+
 @end
 
 @implementation BasicViewController
@@ -83,7 +85,7 @@
                 
                 self.isNetWork = YES;
                 
-                [self showMyAlertView:@"网来啦!!!!"];
+//                [self showMyAlertView:@"网来啦!!!!"];
                 
                 [[NSNotificationCenter defaultCenter] postNotificationName:isnetWorkNotificationYes object:nil];
 
@@ -101,13 +103,33 @@
 
 - (void)loadDataByUrl:(NSString *)urlStr withdataBlock:(SuccessCallBackData)success withFailure:(FailureCallBackData)failure {
     
+    //显示加载框
+    [self.hud showInView:self.view];
+    
     [NetManager loadDataWithUrlStr:urlStr block:^(id successData) {
+        //隐藏加载框
+        [self.hud dismissAnimated:YES];
+        
         success(successData);
         
     } withFaile:^(NSError *error) {
         
+        //隐藏加载框
+        [self.hud dismissAnimated:YES];
         failure(error);
     }];
+}
+
+
+#pragma mark -  构造方法
+
+- (JGProgressHUD *)hud {
+    if (!_hud) {
+        _hud = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
+        _hud.textLabel.text = @"正在加载....";
+    }
+    
+    return _hud;
 }
 
 - (void)didReceiveMemoryWarning {

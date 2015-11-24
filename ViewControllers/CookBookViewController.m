@@ -13,6 +13,10 @@
 #import "CookTableViewCell.h"
 
 
+
+#import "CookBookTableViewCell.h"
+
+
 #define headViewHeight 225.0f
 
 @interface CookBookViewController ()<UITableViewDataSource,UITableViewDelegate> {
@@ -30,6 +34,7 @@
 @property (strong, nonatomic) UIView * headView; //头部视图
 
 @property (strong, nonatomic) NSMutableArray * cookDataArray; //菜谱数据源
+
 @end
 
 
@@ -95,6 +100,8 @@
     //注册cell
     [_cookBookTableView registerNib:[UINib nibWithNibName:@"CookTableViewCell" bundle:nil] forCellReuseIdentifier:@"cellReuseidentifier"];
     
+    [_cookBookTableView registerNib:[UINib nibWithNibName:@"CookBookTableViewCell" bundle:nil] forCellReuseIdentifier:@"cellName"];
+    
     [self.view addSubview:_cookBookTableView];
 }
 
@@ -108,13 +115,16 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 180.0f;
+    return 160.0 * scale_screen;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    CookTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cellReuseidentifier"];
+//    CookTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cellReuseidentifier"];
+//    
+//    [cell setModel:self.cookDataArray[indexPath.row]];
     
+    CookBookTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cellName"];
     [cell setModel:self.cookDataArray[indexPath.row]];
     
     return cell;
@@ -127,22 +137,34 @@
 
 #pragma mark - 网络状态发生改变
 
+//无网络
 - (void)isnotNetWork {
     
     self.netWorkLabel.text = @"没有网络";
     [self.view addSubview:self.netWorkLabel];
 }
 
+//有网络
 - (void)isNetWorkYes {
     
     if (_netWorkLabel) {
         [_netWorkLabel removeFromSuperview];
         _netWorkLabel = nil;
     }
+
+    //清空数据
+    [self cleanData];
+    //刷新数据
+    [self loadData];
 }
 
 
+#pragma mark - 清空数据
 
+- (void)cleanData {
+    [self.adArray removeAllObjects];
+    [self.cookDataArray removeAllObjects];
+}
 
 
 #pragma mark - 构造方法
@@ -172,9 +194,11 @@
     return _cookDataArray;
 }
 
+
 #pragma mark - loadData
 - (void)loadData {
     
+
     //加载广告数据
     [self loadDataByUrl:[NSString stringWithFormat:@"%@is_traditional=0&phonetype=1",URL_COOKBOOK_AD] withdataBlock:^(id successData) {
         
@@ -230,6 +254,7 @@
             }
         }
         else{
+            
             
             //错误提示信息
             [self showMyAlertView:jsonObj[@"message"]];
