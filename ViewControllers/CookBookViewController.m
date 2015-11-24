@@ -190,6 +190,9 @@
                 
                 if (self.adArray.count) {
                     
+                    //创建广告栏滚动视图
+                    [self createAdScrollview];
+                    
                     //赋值给广告栏滚动视图
                     self.adScrollView.imagesArray = self.adArray;
                 }
@@ -245,7 +248,7 @@
 - (void)createAdScrollview {
     
     // 广告栏
-    self.adScrollView = [[CustomScrollView alloc] initWithFrame:CGRectMake(10, 5, screen_Width-20, self.headView.frame.size.height)];
+    self.adScrollView = [[CustomScrollView alloc] initWithFrame:CGRectMake(10, 5, screen_Width-20, self.headView.frame.size.height-5)];
     
     [self.headView addSubview:self.adScrollView];
     
