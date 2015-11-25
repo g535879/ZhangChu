@@ -15,7 +15,7 @@
  */
 @property (weak, nonatomic) IBOutlet UIImageView *categoryImage;
 /**
- 分裂名
+ 分类名
  */
 @property (weak, nonatomic) IBOutlet UILabel *categoryTitle;
 @property (weak, nonatomic) IBOutlet UIImageView *hotImageView;
@@ -48,6 +48,12 @@
  右侧内容
  */
 @property (weak, nonatomic) IBOutlet UILabel *rightContentLabel;
+
+/**
+ *  分类图片高度约束
+ */
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *iconHeight;
+
 /**
  赋值
  */

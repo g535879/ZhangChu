@@ -20,6 +20,10 @@ typedef void (^SuccessCallBackData)(id successData);
 typedef void (^FailureCallBackData)(NSError *error);
 
 /**
+ *  当前IP
+ */
+@property (copy, nonatomic,readonly) NSString * currentIPAddr;
+/**
  单例对象
  */
 

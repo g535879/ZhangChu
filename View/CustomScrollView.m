@@ -91,23 +91,26 @@
     if (_imagesArray) {
         _imagesArray = nil;
     }
-    _imagesArray = imagesArray;
     
-    if (imagesArray) {
+    _imagesArray = [imagesArray mutableCopy];
+    
+    if (_imagesArray) {
         //pagecontrol 总数赋值
         self.pageControl.numberOfPages = self.imagesArray.count;
         
         //显示
         [self initLayout];
-        
-
     }
 }
 
+
 - (NSTimer *)autoRunTimer {
     
-    if (!_autoRunTimer) {
-        _autoRunTimer = [NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(netxPhoto) userInfo:nil repeats:YES];
+    if (!_autoRunTimer || !_autoRunTimer.isValid) {
+        
+        _autoRunTimer = nil;
+        
+        _autoRunTimer = [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(netxPhoto) userInfo:nil repeats:YES];
         [_autoRunTimer setFireDate:[NSDate distantFuture]];
     }
     
@@ -115,16 +118,13 @@
 }
 
 
-#pragma mark - 是否自动滚动
-- (void)autoScroll {
-    
-    if (self.isAutoScroll) {
-        [self.autoRunTimer setFireDate:[NSDate distantPast]];
-    }
-}
-
 #pragma mark - nextPhoto 
 - (void)netxPhoto {
+    
+//    @synchronized(self) {
+//        
+//       
+//    }
     
     [UIView animateWithDuration:1.0f animations:^{
         
@@ -138,25 +138,27 @@
             [self updateImage];
         }
     }];
+
+    
 }
 
 #pragma mark - 初始化显示
 - (void)initLayout {
     
+    self.currentPicIndex = 0;
+    
     [self updateImage];
     
-    [self performSelector:@selector(autoScroll) withObject:nil afterDelay:3.0f];
-//    dispatch_async(dispatch_queue_create("myQueue", DISPATCH_QUEUE_SERIAL), ^{
-//        [NSThread sleepForTimeInterval:2.0f];
-//        //是否自动滚动
-//        [self performSelectorOnMainThread:@selector(autoScroll) withObject:nil waitUntilDone:YES];
-//    });
+    [self performSelector:@selector(startScroll) withObject:nil afterDelay:5.0f];
     
 }
 #pragma mark -  update image
 //更新图片
 - (void)updateImage {
     
+    if (!self.imagesArray.count) {
+        return;
+    }
     CookBookAdModel * leftModel = self.imagesArray[[self getQuerePicIndex:self.currentPicIndex-1]];
     CookBookAdModel * centerModel = self.imagesArray[[self getQuerePicIndex:self.currentPicIndex]];
     CookBookAdModel * rightModel = self.imagesArray[[self getQuerePicIndex:self.currentPicIndex+1]];
@@ -172,6 +174,11 @@
 //返回图片循环下标
 - (NSInteger)getQuerePicIndex:(NSInteger) picIdx {
     
+    if (!self.imagesArray.count) {
+        
+        return self.currentPicIndex;
+    }
+    
     return (picIdx + self.imagesArray.count) % (self.imagesArray.count);
 }
 
@@ -182,6 +189,9 @@
     CGFloat offsetY = scrollView.contentOffset.x;
     
     if (fabs(offsetY-self.viewWidth) < self.viewWidth / 2) { //偏移量小于一半
+        
+        //检测是否需要开启定时器
+        [self performSelector:@selector(startScroll) withObject:nil afterDelay:5.0f];
         return;
     }
     
@@ -197,23 +207,33 @@
     //更新图片
     [self updateImage];
     
-    //开启定时器
-    [self autoScroll];
+    //检测是否需要开启定时器
+   [self performSelector:@selector(startScroll) withObject:nil afterDelay:5.0f];
     
     
 }
 
+//用户拖拽。暂停计时器
 - (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+    
     //暂停定时器
-    [self.autoRunTimer setFireDate:[NSDate distantFuture]];
+    [self.autoRunTimer invalidate];
+    self.autoRunTimer = nil;
 }
+
 #pragma mark - 开始自动滚动
+
 - (void)startScroll{
     
+    if (self.isAutoScroll) {
+        
+        [self.autoRunTimer setFireDate:[NSDate distantPast]];
+    }
 }
 
 - (void)dealloc {
     
+    NSLog(@"delloc");
     //销毁定时器
     [self.autoRunTimer invalidate];
 }

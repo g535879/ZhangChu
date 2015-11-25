@@ -10,7 +10,7 @@
 #import "CookBookAdModel.h"
 #import "CustomScrollView.h"
 #import "CookBookCategoryModel.h"
-#import "CookTableViewCell.h"
+#import "SearchViewController.h"
 
 
 
@@ -23,6 +23,7 @@
     
     UITableView * _cookBookTableView;
 }
+
 
 //看这里是没网的UI
 @property (strong, nonatomic) UILabel * netWorkLabel;
@@ -40,6 +41,8 @@
 
 @implementation CookBookViewController
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -47,10 +50,6 @@
     
     //设置标题
     [self setNavTitle:viewControllerTitleString];
-    
-    
-    //导航栏右侧搜索按钮
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:nil action:nil];
     
     //设置背景色
     [self setBgColor];
@@ -76,6 +75,12 @@
 
 - (void)createLayout {
     
+    //导航栏右侧搜索按钮
+    UIBarButtonItem * rightBBI = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(rightBtnClick)];
+    rightBBI.tintColor = [UIColor whiteColor];
+    
+    self.navigationItem.rightBarButtonItem = rightBBI;
+    
     //tableview
     [self createTableView];
     
@@ -89,16 +94,13 @@
 #pragma mark - tableview 
 - (void)createTableView {
     
-    _cookBookTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, screen_Width, screen_Height-nav_Height-tabBar_Height-10) style:UITableViewStylePlain];
+    _cookBookTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, screen_Width, screen_Height-nav_Height-tabBar_Height) style:UITableViewStylePlain];
     _cookBookTableView.delegate = self;
     _cookBookTableView.dataSource = self;
     _cookBookTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [_cookBookTableView setBackgroundColor:[UIColor clearColor]];
     _cookBookTableView.showsVerticalScrollIndicator = NO;
     _cookBookTableView.showsHorizontalScrollIndicator = NO;
-    
-    //注册cell
-    [_cookBookTableView registerNib:[UINib nibWithNibName:@"CookTableViewCell" bundle:nil] forCellReuseIdentifier:@"cellReuseidentifier"];
     
     [_cookBookTableView registerNib:[UINib nibWithNibName:@"CookBookTableViewCell" bundle:nil] forCellReuseIdentifier:@"cellName"];
     
@@ -119,10 +121,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-//    CookTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cellReuseidentifier"];
-//    
-//    [cell setModel:self.cookDataArray[indexPath.row]];
+
     
     CookBookTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cellName"];
     [cell setModel:self.cookDataArray[indexPath.row]];
@@ -134,6 +133,16 @@
     return self.cookDataArray.count;
 }
 
+#pragma mark - btn Click event
+
+- (void)rightBtnClick {
+    SearchViewController  * searchVC = [SearchViewController new];
+    searchVC.hidesBottomBarWhenPushed = YES;
+    searchVC.title = @"分类搜索";
+    searchVC.hostIP = [[NetManager defaultManager] currentIPAddr];
+    [self.navigationController pushViewController:searchVC animated:YES];
+    
+}
 
 #pragma mark - 网络状态发生改变
 
@@ -153,9 +162,9 @@
     }
 
     //清空数据
-    [self cleanData];
+    //[self cleanData];
     //刷新数据
-    [self loadData];
+    //[self loadData];
 }
 
 
@@ -277,14 +286,18 @@
     
     self.adScrollView.isAutoScroll = YES;
     
+ 
     [self.headView addSubview:self.adScrollView];
     
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 /*
 #pragma mark - Navigation

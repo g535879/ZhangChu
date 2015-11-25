@@ -23,8 +23,21 @@
     
     self.navigationController.navigationBar.translucent = NO;
     
+    if (isiOS7) {
+        //白色标题
+        [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+        
+    }
     //检测网络状态
     [self checkNetWork];
+    
+    
+    //    if (isiOS8) {
+    //        UIAlertController
+    //    }else{
+    //        UIAlertView
+    //    }
+    
 }
 
 #pragma mark - 设置导航栏上面的文字
@@ -130,6 +143,27 @@
     }
     
     return _hud;
+}
+
+/**
+ *  导航栏左侧返回按钮
+ */
+- (void)leftNavItem {
+    //nav_back Btn
+    
+    UIButton * btn = [MyCustomView createButtonWithFrame:CGRectMake(0, 0, 35, 35)
+                                                  target:self SEL:@selector(leftNavItemClick)
+                                         backgroundImage:imageStar(@"nav_back")];
+    UIBarButtonItem * item = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    
+    self.navigationItem.leftBarButtonItem = item;
+}
+
+
+#pragma mark - left navItem click
+- (void)leftNavItemClick {
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

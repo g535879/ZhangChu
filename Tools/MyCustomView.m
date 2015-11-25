@@ -19,4 +19,35 @@
     label.numberOfLines = 0;
     return label;
 }
+
+
++ (UIButton *)createButtonWithFrame:(CGRect)frame target:(id)target SEL:(SEL)method backgroundImage:(UIImage *)image {
+    
+    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.frame = frame;
+    
+    if (image) {
+        [btn setBackgroundImage:image forState:UIControlStateNormal];
+    }
+    
+    [btn addTarget:target action:method forControlEvents:UIControlEventTouchUpInside];
+    
+    return btn;
+}
+
+
++ (UIButton *)createButtonWithFrame:(CGRect)frame target:(id)target SEL:(SEL)method backgroundImage:(UIImage *)image title:(NSString *)title forwardImage:(UIImage *)forwardImage {
+    UIButton * btn = [MyCustomView createButtonWithFrame:frame target:target SEL:method backgroundImage:image];
+    
+    if (forwardImage) {
+            [btn setImage:forwardImage forState:UIControlStateNormal];
+    }
+    
+    if (title) {
+        
+        [btn setTitle:title forState:UIControlStateNormal];
+    }
+    
+    return btn;
+}
 @end

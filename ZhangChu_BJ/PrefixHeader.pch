@@ -41,9 +41,9 @@
 #define isnetWorkNotificationYes @"isnetWorkNotificationYes"
 #define isnetWorkNotificationNo @"isnetWorkNotificationNo"
 
-#define imageStar(str) [UIImage imageNamed:(str)]
+#define imageStar(str) str.length ? [UIImage imageNamed:(str)] : nil
 
-#define imageNameRenderStr(str) [[UIImage imageNamed:(str)] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+#define imageNameRenderStr(str) str.length ? [[UIImage imageNamed:(str)] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] : nil
 
 #define fontSize14 [UIFont systemFontOfSize:14.0f]
 
@@ -58,6 +58,12 @@
 //首先需要一个基数 以什么屏幕作为参照物
 #define iphone6P 414.0f
 #define iphone4s 320.0f
+
+/**
+    判断系统版本
+ */
+#define isiOS7 [[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0f
+#define isiOS8 [[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0f
 
 //缩放比例尺
 #define scale_screen (screen_Width / iphone6P)

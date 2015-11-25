@@ -49,4 +49,8 @@ typedef void (^FailureCallBackData)(NSError *error);
  */
 - (void)loadDataByUrl:(NSString *)urlStr withdataBlock:(SuccessCallBackData) success withFailure:(FailureCallBackData)failure;
 
+/**
+ *  左侧导航返回按钮
+ */
+- (void)leftNavItem;
 @end

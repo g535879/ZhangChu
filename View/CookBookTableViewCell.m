@@ -13,12 +13,28 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    
+    //比例适配
+    self.iconHeight.constant = self.iconHeight.constant * scale_screen;
+    
+    //分类名
+    self.categoryTitle.font = [UIFont boldSystemFontOfSize:scale_screen * 16.0f];
+//    //机型匹配
+//    if (screen_Width == iphone4s) {
+//        //do something
+//    }
 }
 
 
 - (void)setModel:(CookBookCategoryModel *)model {
     [self.categoryImage setImageWithURL:[NSURL URLWithString:model.imageFilename]];
     self.categoryTitle.text = model.name;
+    
+    if ([model.type isEqualToString:@"6"]) {
+        self.hotImageView.hidden = NO;
+    }else{
+        self.hotImageView.hidden = YES;
+    }
     
     NSInteger index = 3 <= model.vegetables.count ? 3 : model.vegetables.count;
     for (int i = 0; i < index; i++) {

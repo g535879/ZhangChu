@@ -28,7 +28,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我是标题" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9kQ-bW-dIh">
                                 <rect key="frame" x="46" y="13" width="64" height="20"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hot_icon" translatesAutoresizingMaskIntoConstraints="NO" id="0IF-Va-UUK" userLabel="hot">
@@ -49,7 +49,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="查看全部" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbr-L5-pCv">
                                 <rect key="frame" x="195" y="16" width="48" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我是第一个吊炸天的菜" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3xL-sX-ngl" userLabel="第一个描述">
@@ -58,29 +58,32 @@
                                     <constraint firstAttribute="height" constant="22" id="Rj0-Ky-un8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我是第一个吊炸天的菜" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8W8-e6-NLK" userLabel="第一个描述">
                                 <rect key="frame" x="99" y="127" width="82" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" tag="1002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我是第一个吊炸天的菜" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8T-cX-137" userLabel="第一个描述">
                                 <rect key="frame" x="189" y="127" width="83" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nc4-M2-XAF">
                                 <rect key="frame" x="8" y="41" width="83" height="83"/>
+                                <state key="normal" image="video_play"/>
                             </button>
                             <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8GV-Qb-0sM">
                                 <rect key="frame" x="99" y="41" width="82" height="83"/>
+                                <state key="normal" image="video_play"/>
                             </button>
                             <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEp-dl-fp7">
                                 <rect key="frame" x="189" y="41" width="83" height="83"/>
+                                <state key="normal" image="video_play"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -136,6 +139,7 @@
                 <outlet property="centerContentBtn" destination="8GV-Qb-0sM" id="bKH-au-SgV"/>
                 <outlet property="centerContentLabel" destination="8W8-e6-NLK" id="R9u-0o-hed"/>
                 <outlet property="hotImageView" destination="0IF-Va-UUK" id="gtg-F9-hTR"/>
+                <outlet property="iconHeight" destination="9JA-on-4Uy" id="aru-rr-KrI"/>
                 <outlet property="leftContentBtn" destination="Nc4-M2-XAF" id="Vhm-dz-vrV"/>
                 <outlet property="leftContentLabel" destination="3xL-sX-ngl" id="g1u-LP-ETa"/>
                 <outlet property="moreInfoImage" destination="yeK-nk-pdO" id="TSC-xh-xf6"/>
@@ -147,6 +151,7 @@
     </objects>
     <resources>
         <image name="hot_icon" width="32" height="26"/>
+        <image name="video_play" width="30" height="30"/>
         <image name="viewmore" width="24" height="24"/>
     </resources>
 </document>
