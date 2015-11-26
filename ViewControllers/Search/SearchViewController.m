@@ -23,6 +23,10 @@
  */
 @property (strong, nonatomic) NSMutableArray *isOpenStatus;
 /**
+ *  cell中选中文字容器
+ */
+@property (strong, nonatomic) NSMutableArray<NSString *> * cellSelectedName;
+/**
  *  表格头视图
  */
 @property (strong, nonatomic) UIView * headView;
@@ -113,6 +117,7 @@
     
     SearchDetailTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cellReuseIdentifier"];
     cell.delegate = self;
+    cell.currentSelectedItemName = self.cellSelectedName[indexPath.section];
     cell.modelArray = (NSArray *)[self.searchDataArray[indexPath.section] data];
     
     return cell;
@@ -239,39 +244,79 @@
     return _searchDataArray;
 }
 
-#pragma mark - 单元格内button点击事件
+- (NSMutableArray *)cellSelectedName {
+    if (!_cellSelectedName) {
+        _cellSelectedName = [@[] mutableCopy];
+        
+        for ( int i = 0 ; i < 5; i++) {
+            //默认名字为空
+            [_cellSelectedName addObject:@""];
+        }
+    }
+    return _cellSelectedName;
+}
+#pragma mark - delegate 单元格内button点击事件
 
 - (void)cellBtnClickWithBtnName:(NSString *)name andCell:(UITableViewCell *)cell {
-    NSLog(@"%@",name);
     
-    //标签视图
+    //当前cell组index
+    NSInteger section = [[self.searchTableView indexPathForCell:cell] section];
     
-    //获取子视图最后一个坐标位置
-    CGPoint currentPoint = [self subViewHeightOfHeadView];
-    UIView * tabView = [[UIView alloc] initWithFrame:CGRectMake(currentPoint.x, currentPoint.y, CELL_HEIGHT, 30)];
-    tabView.backgroundColor = [UIColor colorWithRed:0.93f green:0.87f blue:0.74f alpha:1.00f];
-    tabView.layer.cornerRadius = 5;
-    tabView.layer.masksToBounds = YES;
-    [self.headView.subviews[0] addSubview:tabView];
+    //判断标签是否已经存在
+    if ([self checkIsExsitAtSupViewWithName:name]) {
+        //已存在
+        return;
+    }
+    
+    //判断该组是否已经有元素点击，有则替换
+    if ([[self.cellSelectedName objectAtIndex:section] length]) { //存在
+        //替换已存在button名为新添加button名
+        
+        UIView * supTapView = [self.headView.subviews firstObject];
+        for (UIView  * v in supTapView.subviews) {
+            if ([[(UILabel *)[[v subviews] lastObject] text] isEqualToString:[self.cellSelectedName objectAtIndex:section]]) {
+                //替换为最新的名字
+                [(UILabel *)[[v subviews] lastObject] setText:name];
+                break;
+            }
+        }
+    }
+    else{ //创建新button
+        //创建标签视图
+        //获取子视图最后一个坐标位置
+        CGPoint currentPoint = [self subViewHeightOfHeadView];
+        UIView * tabView = [[UIView alloc] initWithFrame:CGRectMake(currentPoint.x, CGRectGetMaxY(self.headView.subviews[0].frame)+50, CELL_HEIGHT, 30)];
+        tabView.backgroundColor = [UIColor colorWithRed:0.93f green:0.87f blue:0.74f alpha:1.00f];
+        tabView.layer.cornerRadius = 5;
+        tabView.layer.masksToBounds = YES;
+        [self.headView.subviews[0] addSubview:tabView];
+        
+        //关闭按钮
+        UIButton * closeBtn = [MyCustomView createButtonWithFrame:CGRectMake(tabView.frame.size.width - 20, 5, 20,20) target:self SEL:@selector(closeBtnClick:) backgroundImage:imageStar(@"search_header_rmbtn")];
+        [closeBtn setBackgroundImage:imageStar(@"search_header_rmbtn_hl") forState:UIControlStateHighlighted];
+        [tabView addSubview:closeBtn];
+        
+        //创建标签button
+        UILabel *label = [MyCustomView createLabelWithFrame:CGRectMake(10, closeBtn.frame.origin.y, CELL_HEIGHT-closeBtn.frame.size.width-10, 20) textString:name withFont:14.0f textColor:[UIColor blackColor]];
+        [label setAdjustsFontSizeToFitWidth:YES];
+        label.textAlignment = NSTextAlignmentCenter;
+        [tabView addSubview:label];
+        
+        //动画
+        [UIView animateWithDuration:0.3 delay:0 usingSpringWithDamping:0.4 initialSpringVelocity:0.8 options:UIViewAnimationOptionTransitionFlipFromRight animations:^{
+            
+            tabView.frame = CGRectMake(currentPoint.x, currentPoint.y, CELL_HEIGHT, 30);
+            
+        } completion:nil];
+        
 
-    //关闭按钮
-    UIButton * closeBtn = [MyCustomView createButtonWithFrame:CGRectMake(tabView.frame.size.width - 20, 5, 20,20) target:self SEL:@selector(closeBtnClick:) backgroundImage:imageStar(@"search_header_rmbtn")];
-    [closeBtn setBackgroundImage:imageStar(@"search_header_rmbtn_hl") forState:UIControlStateHighlighted];
-    [tabView addSubview:closeBtn];
+    }
+    //保存当前点击button名到cellSelectedName
     
-    //创建标签button
-    UILabel *label = [MyCustomView createLabelWithFrame:CGRectMake(10, closeBtn.frame.origin.y, CELL_HEIGHT-closeBtn.frame.size.width-10, 20) textString:name withFont:14.0f textColor:[UIColor blackColor]];
-    [label setAdjustsFontSizeToFitWidth:YES];
-    label.textAlignment = NSTextAlignmentCenter;
-    [tabView addSubview:label];
-    
-    
-
-    
-    
+    [self.cellSelectedName replaceObjectAtIndex:section withObject:name];
 }
 
-//获取headview中坐标点
+//获取headview中最后一个位置坐标点
 - (CGPoint)subViewHeightOfHeadView {
     //
     NSInteger width = [self.headView.subviews firstObject].frame.size.width;
@@ -281,6 +326,10 @@
     
     NSInteger currentX = (NSInteger)(CGRectGetMaxX(lastframe) + 10) % width;
     NSInteger currentY = lastframe.origin.y + (10 + lastframe.size.height) * ((NSInteger)(CGRectGetMaxX(lastframe) + 10) / width);
+    if (currentX + lastframe.size.width > width) { //超过边界 , 往下移动一行
+        currentX = (NSInteger)(currentX + lastframe.size.width) % width;
+        currentY += 10 + lastframe.size.height;
+    }
     if (currentY == 0) {
         currentY = 5;
     }
@@ -294,6 +343,7 @@
 
 //标签关闭事件
 - (void)closeBtnClick:(UIButton *)btn {
+    
     UIView * supTapView = [self.headView.subviews firstObject];
     
     //当前被删除的标签在父视图的位置
@@ -301,16 +351,63 @@
     
     //修改删除后的坐标值。后面的往前移动
     for (NSInteger i = supTapView.subviews.count - 1; i > currentIndex; i--) {
-        //传递frame值
-        [UIView animateWithDuration:0.3 animations:^{
+        
+        //传递frame
+        [UIView animateWithDuration:0.3 delay:0 usingSpringWithDamping:0.4 initialSpringVelocity:0.8 options:UIViewAnimationOptionTransitionFlipFromRight animations:^{
             [supTapView.subviews objectAtIndex:i].frame = [supTapView.subviews objectAtIndex:i-1].frame;
-        }];
+        } completion:nil];
         
     }
     //删除标签视图
     [btn.superview removeFromSuperview];
+    
+    //得到标签名
+    NSString * tapStr = [[[btn.superview subviews] lastObject] text];
+    
+    for (NSString * str in [self.cellSelectedName copy]) {
+        if ([str isEqualToString: tapStr]) { //找到该标签
+            NSInteger section = [self.cellSelectedName indexOfObject:str];
+            [self.cellSelectedName replaceObjectAtIndex:section withObject:@""];
+            
+            
+            //关闭其他组
+            for (NSNumber * bookNumber in [self.isOpenStatus copy]) {
+                if ([bookNumber boolValue]) { //开启状态
+                    
+                    //当前下标
+                    NSInteger cIndex = [self.isOpenStatus indexOfObject:bookNumber];
+                    
+                    btn.selected = NO;
+                    //关闭状体啊
+                    [self.isOpenStatus replaceObjectAtIndex:cIndex withObject:[NSNumber numberWithBool:NO]];
+                    
+                    //关闭单元格
+                    [self.searchTableView reloadSections:[NSIndexSet indexSetWithIndex:cIndex] withRowAnimation:UITableViewRowAnimationFade];
+                }
+            }
+            
+            //开启当前cell
+            [self.isOpenStatus replaceObjectAtIndex:section withObject:[NSNumber numberWithBool:YES]];
+            
+            //刷新表格
+            //关闭单元格
+            [self.searchTableView reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationFade];
+            return;
+        }
+    }
 }
 
+#pragma mark - 检查标签是否已经存在
+- (BOOL)checkIsExsitAtSupViewWithName:(NSString *)name {
+    
+    UIView * supTapView = [self.headView.subviews lastObject];
+    for (UIView  * v in supTapView.subviews) {
+        if ([[(UILabel *)[[v subviews] lastObject] text] isEqualToString:name]) {
+            return YES;
+        }
+    }
+    return NO;
+}
 
 /*
 #pragma mark - Navigation

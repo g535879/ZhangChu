@@ -29,4 +29,9 @@
  *  赋值
  */
 @property (copy, nonatomic) NSArray * modelArray;
+
+/**
+ *  当前选中的按钮
+ */
+@property (copy, nonatomic) NSString * currentSelectedItemName;
 @end

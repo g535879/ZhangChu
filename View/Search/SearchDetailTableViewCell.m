@@ -85,26 +85,51 @@
         SearchCategoryDetailModel * dModel = dataArray[i];
         
         UIButton * btn = [MyCustomView createButtonWithFrame:CGRectMake(i * (width + SUBVIEW_SPACE ), 0, CELL_HEIGHT, CELL_HEIGHT) target:self SEL:@selector(cellSubBtnClick:) backgroundImage:nil title:dModel.name forwardImage:nil];
-        
-        [btn setImage:imageStar(dModel.iconName) forState:UIControlStateNormal];
-        [btn setImage:imageStar(dModel.hlIconName) forState:UIControlStateSelected];
-        [btn setBackgroundColor:[UIColor whiteColor]];
-        [btn.titleLabel setFont:[UIFont systemFontOfSize:50 * scale_screen]];
-        [btn.titleLabel setAdjustsFontSizeToFitWidth:YES];
+//        [btn.titleLabel setAdjustsFontSizeToFitWidth:YES];
         btn.layer.cornerRadius = 4;
         btn.layer.masksToBounds = YES;
         [btn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
         
-        if (dModel.iconName.length) {
-            [btn.titleLabel setFont:[UIFont systemFontOfSize:20 * scale_screen]];
+        //默认背景图
+        [btn setBackgroundImage:imageStar(@"search_item_bg") forState:UIControlStateNormal];
+        [btn setBackgroundImage:imageStar(@"search_item_bg_hl") forState:UIControlStateSelected];
+        
+        if (dModel.iconName.length) { //有图片和文字的情况
+            
+            [btn setImage:imageStar(dModel.iconName) forState:UIControlStateNormal];
+            [btn setImage:imageStar(dModel.hlIconName) forState:UIControlStateSelected];
+            
+            [btn.titleLabel setFont:[UIFont systemFontOfSize:12.0f * scale_screen]];
             [btn.titleLabel setContentMode:UIViewContentModeLeft];
             
             [btn setTitleEdgeInsets:UIEdgeInsetsMake(45* scale_screen,-CELL_HEIGHT+19 * scale_screen, 0, 0)];
             
             [btn setImageEdgeInsets:UIEdgeInsetsMake(-5 * scale_screen, 6 * scale_screen, 0, 0)];
         }
+        else{ //无图
+            
+            //根据文字个数改变文字大小
+            if (dModel.name.length > 1) { //多个字
+                
+                [btn.titleLabel setFont:[UIFont boldSystemFontOfSize:25.0f * scale_screen]];
+            }
+            else{
+                [btn.titleLabel setFont:[UIFont boldSystemFontOfSize:45.0f * scale_screen]];
+            }
+        }
+        
+        
+        
         [self.subScrollView addSubview:btn];
+        
+        //判断button是否被选中
+        if ([self.currentSelectedItemName isEqualToString:dModel.name]) { //找到该button
+            
+            btn.selected = YES;
+            //设置scrollView偏移量
+            self.subScrollView.contentOffset = CGPointMake(btn.frame.origin.x, 0);
+        }
     }
 }
 
@@ -128,13 +153,10 @@
     for (UIButton * b in self.subScrollView.subviews) {
         if (b.selected) {
             b.selected = NO;
-            [b setBackgroundColor:[UIColor whiteColor]];
         }
     }
     
     btn.selected = YES;
-    [btn setBackgroundColor:[UIColor colorWithRed:0.72f green:0.40f blue:0.24f alpha:1.00f]];
-    
     //传递button点击事件
     
     if ([self.delegate respondsToSelector:@selector(cellBtnClickWithBtnName:andCell:)]) {
