@@ -26,6 +26,7 @@
 		AD5B60551C045FF000BC28C9 /* JGProgressHUDPieIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5B60481C045FF000BC28C9 /* JGProgressHUDPieIndicatorView.m */; settings = {ASSET_TAGS = (); }; };
 		AD5B60561C045FF000BC28C9 /* JGProgressHUDRingIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5B604A1C045FF000BC28C9 /* JGProgressHUDRingIndicatorView.m */; settings = {ASSET_TAGS = (); }; };
 		AD5B60571C045FF000BC28C9 /* JGProgressHUDSuccessIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5B604C1C045FF000BC28C9 /* JGProgressHUDSuccessIndicatorView.m */; settings = {ASSET_TAGS = (); }; };
+		AD7A02C71C06F23F007E0043 /* SearchHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7A02C61C06F23F007E0043 /* SearchHeadView.m */; settings = {ASSET_TAGS = (); }; };
 		AD9FA0571C02F1CA000AD803 /* MyCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD9FA0561C02F1CA000AD803 /* MyCustomView.m */; settings = {ASSET_TAGS = (); }; };
 		AD9FA05A1C02F5C3000AD803 /* MyNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD9FA0591C02F5C3000AD803 /* MyNavigationController.m */; settings = {ASSET_TAGS = (); }; };
 		AD9FA0621C031AEA000AD803 /* CustomScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD9FA0611C031AEA000AD803 /* CustomScrollView.m */; settings = {ASSET_TAGS = (); }; };
@@ -122,6 +123,8 @@
 		AD5B604A1C045FF000BC28C9 /* JGProgressHUDRingIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUDRingIndicatorView.m; sourceTree = "<group>"; };
 		AD5B604B1C045FF000BC28C9 /* JGProgressHUDSuccessIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUDSuccessIndicatorView.h; sourceTree = "<group>"; };
 		AD5B604C1C045FF000BC28C9 /* JGProgressHUDSuccessIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUDSuccessIndicatorView.m; sourceTree = "<group>"; };
+		AD7A02C51C06F23F007E0043 /* SearchHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchHeadView.h; sourceTree = "<group>"; };
+		AD7A02C61C06F23F007E0043 /* SearchHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchHeadView.m; sourceTree = "<group>"; };
 		AD9FA0551C02F1CA000AD803 /* MyCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCustomView.h; sourceTree = "<group>"; };
 		AD9FA0561C02F1CA000AD803 /* MyCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCustomView.m; sourceTree = "<group>"; };
 		AD9FA0581C02F5C3000AD803 /* MyNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyNavigationController.h; path = ../MyNavigationController.h; sourceTree = "<group>"; };
@@ -185,9 +188,9 @@
 		ADE9EA391C05A56100DBEAF5 /* SearchCategoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCategoryModel.m; sourceTree = "<group>"; };
 		ADE9EA3B1C05A58200DBEAF5 /* SearchCategoryDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCategoryDetailModel.h; sourceTree = "<group>"; };
 		ADE9EA3C1C05A58200DBEAF5 /* SearchCategoryDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCategoryDetailModel.m; sourceTree = "<group>"; };
-		ADE9EA3F1C05B0CA00DBEAF5 /* SearchDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchDetailTableViewCell.h; path = Search/SearchDetailTableViewCell.h; sourceTree = "<group>"; };
-		ADE9EA401C05B0CA00DBEAF5 /* SearchDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchDetailTableViewCell.m; path = Search/SearchDetailTableViewCell.m; sourceTree = "<group>"; };
-		ADE9EA411C05B0CA00DBEAF5 /* SearchDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SearchDetailTableViewCell.xib; path = Search/SearchDetailTableViewCell.xib; sourceTree = "<group>"; };
+		ADE9EA3F1C05B0CA00DBEAF5 /* SearchDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchDetailTableViewCell.h; sourceTree = "<group>"; };
+		ADE9EA401C05B0CA00DBEAF5 /* SearchDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchDetailTableViewCell.m; sourceTree = "<group>"; };
+		ADE9EA411C05B0CA00DBEAF5 /* SearchDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchDetailTableViewCell.xib; sourceTree = "<group>"; };
 		CE948B551C02A388008C6757 /* ZhangChu_BJ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZhangChu_BJ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE948B591C02A388008C6757 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CE948B5B1C02A388008C6757 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -312,9 +315,6 @@
 			children = (
 				ADE9EA3E1C05B0A200DBEAF5 /* Search */,
 				ADD638341C055CCD004EA400 /* CookBook */,
-				ADE9EA3F1C05B0CA00DBEAF5 /* SearchDetailTableViewCell.h */,
-				ADE9EA401C05B0CA00DBEAF5 /* SearchDetailTableViewCell.m */,
-				ADE9EA411C05B0CA00DBEAF5 /* SearchDetailTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -447,6 +447,11 @@
 		ADE9EA3E1C05B0A200DBEAF5 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				AD7A02C51C06F23F007E0043 /* SearchHeadView.h */,
+				AD7A02C61C06F23F007E0043 /* SearchHeadView.m */,
+				ADE9EA3F1C05B0CA00DBEAF5 /* SearchDetailTableViewCell.h */,
+				ADE9EA401C05B0CA00DBEAF5 /* SearchDetailTableViewCell.m */,
+				ADE9EA411C05B0CA00DBEAF5 /* SearchDetailTableViewCell.xib */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -677,6 +682,7 @@
 				AD42E5111C02B5E900764EC7 /* BasicViewController.m in Sources */,
 				AD9FA0981C033F1D000AD803 /* AFSecurityPolicy.m in Sources */,
 				ADCBB5711C03FF7500F2D695 /* UIViewController+AlertView.m in Sources */,
+				AD7A02C71C06F23F007E0043 /* SearchHeadView.m in Sources */,
 				AD9FA0941C033F1C000AD803 /* AFHTTPRequestOperation.m in Sources */,
 				AD5B60341C04395300BC28C9 /* CookBookTableViewCell.m in Sources */,
 				AD9FA0A71C034C52000AD803 /* CookBookDetailModel.m in Sources */,

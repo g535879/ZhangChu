@@ -123,12 +123,25 @@
         
         [self.subScrollView addSubview:btn];
         
+        //设置默认偏移量
+        
+        self.subScrollView.contentOffset = CGPointMake(0, 0);
         //判断button是否被选中
         if ([self.currentSelectedItemName isEqualToString:dModel.name]) { //找到该button
             
             btn.selected = YES;
-            //设置scrollView偏移量
-            self.subScrollView.contentOffset = CGPointMake(btn.frame.origin.x, 0);
+        }
+    }
+    
+    //设置偏移量
+    for (UIButton * btn in self.subScrollView.subviews) {
+        if ([btn respondsToSelector:@selector(setSelected:)]) {
+            if (btn.selected) {
+                //设置scrollView偏移量
+                //滚动视图偏移量
+                [self setScrollViewOffSetWithBtn:btn];
+                return;
+            }
         }
     }
 }
@@ -157,6 +170,10 @@
     }
     
     btn.selected = YES;
+    
+    //滚动视图偏移量
+    [self setScrollViewOffSetWithBtn:btn];
+    
     //传递button点击事件
     
     if ([self.delegate respondsToSelector:@selector(cellBtnClickWithBtnName:andCell:)]) {
@@ -167,6 +184,31 @@
 }
 
 
+/**
+ *  根据被选中的button设置滚动视图偏移量
+ *
+ *  @param btn
+ */
+- (void)setScrollViewOffSetWithBtn:(UIButton *)btn {
+    
+    CGPoint offSet;
+    //前几个button。没有被遮挡。设置偏移量为（0，0）
+    if (CGRectGetMaxX(btn.frame) < self.subScrollView.frame.size.width - CELL_HEIGHT) {
+        offSet = CGPointMake(0, 0);
+    }
+    else if (CGRectGetMaxX(btn.frame) > self.subScrollView.contentSize.width - self.subScrollView.frame.size.width){ //最后几个button。设置偏移量为总长度-滚动视图宽度
+       offSet = CGPointMake(self.subScrollView.contentSize.width - self.subScrollView.frame.size.width, 0);
+    }
+    else{
+        offSet = CGPointMake(CGRectGetMidX(btn.frame) - self.subScrollView.frame.size.width / 2.0, 0);
+    }
+    
+    //动画。偏移
+    [UIView animateWithDuration:0.3 animations:^{
+        self.subScrollView.contentOffset = offSet;
+    }];
+    
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

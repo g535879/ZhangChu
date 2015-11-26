@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+@class SearchDetailTableViewCell;
 
-@protocol CellBtnClick <NSObject>
+@protocol SearchCellDelegate <NSObject>
 
 /**
  *  协议方法响应cell内button点击事件
@@ -16,15 +17,17 @@
  *  @param name button所在名
  *  @param cell 当前单元格
  */
-- (void)cellBtnClickWithBtnName:(NSString *)name andCell:(UITableViewCell *)cell;
+- (void)cellBtnClickWithBtnName:(NSString *)name andCell:(SearchDetailTableViewCell *)cell;
 
 @end
+
+
 @interface SearchDetailTableViewCell : UITableViewCell
 
 /**
  *  代理对象
  */
-@property (assign, nonatomic) id<CellBtnClick> delegate;
+@property (assign, nonatomic) id<SearchCellDelegate> delegate;
 /**
  *  赋值
  */
