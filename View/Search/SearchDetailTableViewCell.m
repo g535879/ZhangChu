@@ -196,7 +196,7 @@
     if (CGRectGetMaxX(btn.frame) < self.subScrollView.frame.size.width - CELL_HEIGHT) {
         offSet = CGPointMake(0, 0);
     }
-    else if (CGRectGetMaxX(btn.frame) > self.subScrollView.contentSize.width - self.subScrollView.frame.size.width){ //最后几个button。设置偏移量为总长度-滚动视图宽度
+    else if (CGRectGetMaxX(btn.frame) > self.subScrollView.contentSize.width - self.subScrollView.frame.size.width/2){ //最后几个button。设置偏移量为总长度-滚动视图宽度
        offSet = CGPointMake(self.subScrollView.contentSize.width - self.subScrollView.frame.size.width, 0);
     }
     else{

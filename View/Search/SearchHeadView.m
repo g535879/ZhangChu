@@ -39,7 +39,7 @@
     [self setBackgroundColor:[UIColor clearColor]];
     
     //头视图子视图
-    self.bgView = [[UIView alloc] initWithFrame:CGRectMake(15, 15, screen_Width - 30, self.frame.size.height - 20)];
+    self.bgView = [[UIView alloc] initWithFrame:CGRectMake(15, 10, screen_Width - 30, self.frame.size.height - 20)];
     [self.bgView setBackgroundColor:[UIColor whiteColor]];
     [self addSubview:self.bgView];
     
@@ -73,28 +73,28 @@
     //创建标签视图
     //获取子视图最后一个坐标位置
     CGPoint currentPoint = [self subViewHeightOfHeadView];
-    UIImageView * tabView = [[UIImageView alloc] initWithFrame:CGRectMake(currentPoint.x, CGRectGetMaxY(self.bgView.frame)+50, CELL_HEIGHT, 30)];
+    UIImageView * tabView = [[UIImageView alloc] initWithFrame:CGRectMake(currentPoint.x, CGRectGetMaxY(self.bgView.frame)+50, self.frame.size.width/3-30, self.frame.size.height/2 - 20)];
     tabView.userInteractionEnabled = YES;
-    [tabView setImage:imageStar(@"search_btn_intelligent")];
+    [tabView setImage:imageStar(@"search_meterial_bg")];
     tabView.layer.cornerRadius = 5;
     tabView.layer.masksToBounds = YES;
     [self.bgView addSubview:tabView];
     
     //关闭按钮
-    UIButton * closeBtn = [MyCustomView createButtonWithFrame:CGRectMake(tabView.frame.size.width - 20, 5, 20,20) target:self SEL:@selector(closeBtnClick:) backgroundImage:imageStar(@"search_header_rmbtn")];
+    UIButton * closeBtn = [MyCustomView createButtonWithFrame:CGRectMake(tabView.frame.size.width - 40, (tabView.frame.size.height-40) / 2.0, 40,40) target:self SEL:@selector(closeBtnClick:) backgroundImage:imageStar(@"search_header_rmbtn")];
     [closeBtn setBackgroundImage:imageStar(@"search_header_rmbtn_hl") forState:UIControlStateHighlighted];
     [tabView addSubview:closeBtn];
     
     //创建标签button
-    UILabel *label = [MyCustomView createLabelWithFrame:CGRectMake(10, closeBtn.frame.origin.y, CELL_HEIGHT-closeBtn.frame.size.width-10, 20) textString:name withFont:14.0f textColor:[UIColor blackColor]];
+    UILabel *label = [MyCustomView createLabelWithFrame:CGRectMake(10, (tabView.frame.size.height - 25 ) / 2.0, tabView.frame.size.width-closeBtn.frame.size.width-5, 25) textString:name withFont:24.0f textColor:[UIColor blackColor]];
     [label setAdjustsFontSizeToFitWidth:YES];
     label.textAlignment = NSTextAlignmentCenter;
     [tabView addSubview:label];
     
     //动画
-    [UIView animateWithDuration:0.3 delay:0 usingSpringWithDamping:0.4 initialSpringVelocity:0.8 options:UIViewAnimationOptionTransitionFlipFromRight animations:^{
+    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.4 initialSpringVelocity:0.8 options:UIViewAnimationOptionTransitionFlipFromRight animations:^{
         
-    tabView.frame = CGRectMake(currentPoint.x, currentPoint.y, CELL_HEIGHT, 30);
+    tabView.frame = CGRectMake(currentPoint.x, currentPoint.y, self.frame.size.width/3-30, self.frame.size.height/2 - 20);
         
     } completion:nil];
 }
@@ -112,7 +112,7 @@
     for (NSInteger i = supTapView.subviews.count - 1; i > currentIndex; i--) {
         
         //传递frame
-        [UIView animateWithDuration:0.3 delay:0 usingSpringWithDamping:0.4 initialSpringVelocity:0.8 options:UIViewAnimationOptionTransitionFlipFromRight animations:^{
+        [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.6 initialSpringVelocity:0.6 options:UIViewAnimationOptionTransitionFlipFromRight animations:^{
             [supTapView.subviews objectAtIndex:i].frame = [supTapView.subviews objectAtIndex:i-1].frame;
         } completion:nil];
         

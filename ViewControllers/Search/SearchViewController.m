@@ -18,7 +18,7 @@
 
 #define  CELL_HEIGHT 85.0f * scale_screen
 
-@interface SearchViewController ()<UITableViewDataSource,UITableViewDelegate,SearchCellDelegate>
+@interface SearchViewController ()<UITableViewDataSource,UITableViewDelegate,SearchCellDelegate,UITextFieldDelegate>
 /**
  *  cell开启状态数据
  */
@@ -95,7 +95,7 @@
     }];
     
     self.searchTableView.tableHeaderView = self.headView;
-    
+    [self.searchTableView setBackgroundColor:[UIColor blueColor]];
     //注册tableview  cell
     [self.searchTableView registerNib:[UINib nibWithNibName:@"SearchDetailTableViewCell" bundle:nil] forCellReuseIdentifier:@"cellReuseIdentifier"];
 }
@@ -318,5 +318,16 @@
             return;
         }
     }
+}
+
+#pragma mark - textField delegate 
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self.view endEditing:YES];
+    return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    return YES;
 }
 @end

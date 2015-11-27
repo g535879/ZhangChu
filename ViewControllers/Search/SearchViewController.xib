@@ -27,14 +27,100 @@
                         <outlet property="delegate" destination="-1" id="2bg-Wh-Mhz"/>
                     </connections>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LzK-iD-Tds">
+                    <rect key="frame" x="0.0" y="551" width="300" height="49"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="49" id="4J0-gr-5YF"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <inset key="titleEdgeInsets" minX="0.0" minY="30" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="分类搜索" backgroundImage="search_category"/>
+                    <state key="selected" backgroundImage="search_category_hl">
+                        <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lvd-oQ-NXm">
+                    <rect key="frame" x="300" y="551" width="300" height="49"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <inset key="contentEdgeInsets" minX="0.0" minY="30" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="智能选菜" backgroundImage="search_intellegence"/>
+                    <state key="selected" backgroundImage="search_intellegence_hl">
+                        <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nOE-7r-wJK">
+                    <rect key="frame" x="515" y="506" width="80" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="3gB-f0-Bv4"/>
+                        <constraint firstAttribute="height" constant="40" id="edw-qf-bg9"/>
+                    </constraints>
+                    <state key="normal" title="搜索" backgroundImage="search_btn"/>
+                    <state key="highlighted" backgroundImage="search_btn_hl"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Mn-Py-zDC">
+                    <rect key="frame" x="15" y="506" width="485" height="40"/>
+                    <state key="normal" backgroundImage="search_inputview"/>
+                </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入关键字" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hKf-dL-VEc">
+                    <rect key="frame" x="60" y="506" width="425" height="40"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="3eh-jP-elD"/>
+                    </connections>
+                </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="g5V-6f-LJu" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="0Rp-I2-wVa"/>
+                <constraint firstItem="lvd-oQ-NXm" firstAttribute="top" secondItem="hKf-dL-VEc" secondAttribute="bottom" id="1QF-39-tCs"/>
+                <constraint firstItem="hKf-dL-VEc" firstAttribute="top" secondItem="5Mn-Py-zDC" secondAttribute="top" id="26s-aQ-Es8"/>
+                <constraint firstItem="lvd-oQ-NXm" firstAttribute="height" secondItem="LzK-iD-Tds" secondAttribute="height" id="2pB-zJ-rPM"/>
+                <constraint firstItem="lvd-oQ-NXm" firstAttribute="leading" secondItem="LzK-iD-Tds" secondAttribute="trailing" id="73B-oy-yHB"/>
+                <constraint firstItem="lvd-oQ-NXm" firstAttribute="width" secondItem="LzK-iD-Tds" secondAttribute="width" id="9Dd-Tl-hGa"/>
+                <constraint firstAttribute="bottom" secondItem="lvd-oQ-NXm" secondAttribute="bottom" id="DAN-9c-JRc"/>
+                <constraint firstItem="5Mn-Py-zDC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="E3c-p4-tZb"/>
                 <constraint firstAttribute="bottom" secondItem="g5V-6f-LJu" secondAttribute="bottom" constant="94" id="Ep9-6C-zq4"/>
+                <constraint firstItem="LzK-iD-Tds" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Isq-GE-0IL"/>
+                <constraint firstAttribute="bottom" secondItem="LzK-iD-Tds" secondAttribute="bottom" id="M47-Bc-90C"/>
+                <constraint firstItem="nOE-7r-wJK" firstAttribute="top" secondItem="g5V-6f-LJu" secondAttribute="bottom" id="MJQ-Jq-bPM"/>
                 <constraint firstAttribute="trailing" secondItem="g5V-6f-LJu" secondAttribute="trailing" id="OMR-R6-Z6T"/>
+                <constraint firstAttribute="trailing" secondItem="lvd-oQ-NXm" secondAttribute="trailing" id="QG2-Pi-NuL"/>
+                <constraint firstItem="lvd-oQ-NXm" firstAttribute="top" secondItem="5Mn-Py-zDC" secondAttribute="bottom" constant="5" id="QaC-pF-wla"/>
+                <constraint firstItem="nOE-7r-wJK" firstAttribute="leading" secondItem="hKf-dL-VEc" secondAttribute="trailing" constant="30" id="RtR-JT-4uq"/>
+                <constraint firstItem="hKf-dL-VEc" firstAttribute="leading" secondItem="5Mn-Py-zDC" secondAttribute="trailing" constant="-440" id="SNB-qE-mdt"/>
+                <constraint firstItem="hKf-dL-VEc" firstAttribute="centerY" secondItem="5Mn-Py-zDC" secondAttribute="centerY" id="XCh-PH-Guf"/>
+                <constraint firstItem="lvd-oQ-NXm" firstAttribute="top" secondItem="nOE-7r-wJK" secondAttribute="bottom" constant="5" id="cK3-jH-Oom"/>
+                <constraint firstItem="hKf-dL-VEc" firstAttribute="height" secondItem="5Mn-Py-zDC" secondAttribute="height" id="cxb-tz-JxM"/>
+                <constraint firstItem="hKf-dL-VEc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="60" id="eEH-aZ-LKz"/>
+                <constraint firstItem="hKf-dL-VEc" firstAttribute="top" secondItem="g5V-6f-LJu" secondAttribute="bottom" id="ffu-aH-p2g"/>
+                <constraint firstAttribute="trailing" secondItem="nOE-7r-wJK" secondAttribute="trailing" constant="5" id="kBc-FJ-Znz"/>
+                <constraint firstItem="lvd-oQ-NXm" firstAttribute="leading" secondItem="LzK-iD-Tds" secondAttribute="trailing" id="o29-0t-yYt"/>
+                <constraint firstItem="hKf-dL-VEc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="60" id="rRc-Ct-c0i"/>
                 <constraint firstItem="g5V-6f-LJu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="rSE-Ey-0Al"/>
+                <constraint firstItem="nOE-7r-wJK" firstAttribute="leading" secondItem="5Mn-Py-zDC" secondAttribute="trailing" constant="15" id="uaX-b3-8SL"/>
+                <constraint firstItem="5Mn-Py-zDC" firstAttribute="top" secondItem="g5V-6f-LJu" secondAttribute="bottom" id="xIU-Sb-gFW"/>
+                <constraint firstItem="nOE-7r-wJK" firstAttribute="leading" secondItem="hKf-dL-VEc" secondAttribute="trailing" constant="60" id="yb2-ck-3mZ"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="26s-aQ-Es8"/>
+                    <exclude reference="SNB-qE-mdt"/>
+                    <exclude reference="eEH-aZ-LKz"/>
+                    <exclude reference="ffu-aH-p2g"/>
+                    <exclude reference="1QF-39-tCs"/>
+                    <exclude reference="yb2-ck-3mZ"/>
+                </mask>
+            </variation>
         </view>
     </objects>
+    <resources>
+        <image name="search_btn" width="82" height="38"/>
+        <image name="search_btn_hl" width="80" height="34"/>
+        <image name="search_category" width="160" height="40"/>
+        <image name="search_category_hl" width="160" height="40"/>
+        <image name="search_inputview" width="203" height="38"/>
+        <image name="search_intellegence" width="160" height="40"/>
+        <image name="search_intellegence_hl" width="160" height="40"/>
+    </resources>
 </document>

@@ -11,7 +11,7 @@
 @interface SearchHeadView : UIView
 
 /**
- *  close btn 回调
+ *  close btn click 回调
  */
 @property (copy, nonatomic) void (^closeBtnClick)(NSString * btnName);
 /**
