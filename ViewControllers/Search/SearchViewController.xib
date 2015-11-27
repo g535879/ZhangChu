@@ -3,11 +3,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController">
             <connections>
+                <outlet property="bottomSearchView" destination="vfi-O3-vgz" id="NNK-lM-Mxu"/>
                 <outlet property="searchTableView" destination="g5V-6f-LJu" id="tus-Fe-SBy"/>
+                <outlet property="searchTextField" destination="JHP-hB-3r7" id="t1a-Tg-gBS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,17 +19,6 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="g5V-6f-LJu">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="506"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="scrollEnabled" value="NO"/>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="giw-pI-Xu7"/>
-                        <outlet property="delegate" destination="-1" id="2bg-Wh-Mhz"/>
-                    </connections>
-                </tableView>
                 <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LzK-iD-Tds">
                     <rect key="frame" x="0.0" y="551" width="300" height="49"/>
                     <constraints>
@@ -48,78 +40,86 @@
                         <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nOE-7r-wJK">
-                    <rect key="frame" x="515" y="506" width="80" height="40"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vfi-O3-vgz">
+                    <rect key="frame" x="0.0" y="506" width="600" height="45"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wy4-cX-smr">
+                            <rect key="frame" x="525" y="5" width="70" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="83u-AH-LlE"/>
+                                <constraint firstAttribute="width" secondItem="Wy4-cX-smr" secondAttribute="height" multiplier="2:1" id="McR-cw-mPy"/>
+                            </constraints>
+                            <state key="normal" title="搜索" backgroundImage="search_btn"/>
+                            <connections>
+                                <action selector="SearchBtnClick" destination="-1" eventType="touchUpInside" id="gqn-NG-pql"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3v9-Gw-sah">
+                            <rect key="frame" x="15" y="5" width="495" height="35"/>
+                            <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
+                        </button>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入关键字" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JHP-hB-3r7">
+                            <rect key="frame" x="60" y="5" width="430" height="35"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="eIT-QD-PlJ"/>
+                            </connections>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="80" id="3gB-f0-Bv4"/>
-                        <constraint firstAttribute="height" constant="40" id="edw-qf-bg9"/>
+                        <constraint firstAttribute="bottom" secondItem="JHP-hB-3r7" secondAttribute="bottom" constant="5" id="0d0-SX-7Pv"/>
+                        <constraint firstItem="Wy4-cX-smr" firstAttribute="leading" secondItem="JHP-hB-3r7" secondAttribute="trailing" constant="35" id="BBj-gS-vP5"/>
+                        <constraint firstItem="3v9-Gw-sah" firstAttribute="top" secondItem="vfi-O3-vgz" secondAttribute="top" constant="5" id="BfH-9f-ZtI"/>
+                        <constraint firstItem="3v9-Gw-sah" firstAttribute="leading" secondItem="vfi-O3-vgz" secondAttribute="leading" constant="15" id="PvX-rO-ocU"/>
+                        <constraint firstItem="JHP-hB-3r7" firstAttribute="leading" secondItem="vfi-O3-vgz" secondAttribute="leading" constant="60" id="Q3d-H8-6vt"/>
+                        <constraint firstItem="Wy4-cX-smr" firstAttribute="top" secondItem="vfi-O3-vgz" secondAttribute="top" constant="5" id="RxS-07-Sbb"/>
+                        <constraint firstAttribute="bottom" secondItem="3v9-Gw-sah" secondAttribute="bottom" constant="5" id="VSZ-q7-ExK"/>
+                        <constraint firstAttribute="bottom" secondItem="Wy4-cX-smr" secondAttribute="bottom" constant="5" id="aTL-uW-rUF"/>
+                        <constraint firstAttribute="height" constant="45" id="ac8-ni-NdZ"/>
+                        <constraint firstAttribute="trailing" secondItem="Wy4-cX-smr" secondAttribute="trailing" constant="5" id="b02-hH-p8L"/>
+                        <constraint firstItem="JHP-hB-3r7" firstAttribute="top" secondItem="vfi-O3-vgz" secondAttribute="top" constant="5" id="om3-N6-Lab"/>
+                        <constraint firstItem="Wy4-cX-smr" firstAttribute="leading" secondItem="3v9-Gw-sah" secondAttribute="trailing" constant="15" id="yK4-zj-tox"/>
                     </constraints>
-                    <state key="normal" title="搜索" backgroundImage="search_btn"/>
-                    <state key="highlighted" backgroundImage="search_btn_hl"/>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Mn-Py-zDC">
-                    <rect key="frame" x="15" y="506" width="485" height="40"/>
-                    <state key="normal" backgroundImage="search_inputview"/>
-                </button>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入关键字" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hKf-dL-VEc">
-                    <rect key="frame" x="60" y="506" width="425" height="40"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="g5V-6f-LJu">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="506"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="scrollEnabled" value="NO"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
-                        <outlet property="delegate" destination="-1" id="3eh-jP-elD"/>
+                        <outlet property="dataSource" destination="-1" id="giw-pI-Xu7"/>
+                        <outlet property="delegate" destination="-1" id="2bg-Wh-Mhz"/>
                     </connections>
-                </textField>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="g5V-6f-LJu" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="0Rp-I2-wVa"/>
-                <constraint firstItem="lvd-oQ-NXm" firstAttribute="top" secondItem="hKf-dL-VEc" secondAttribute="bottom" id="1QF-39-tCs"/>
-                <constraint firstItem="hKf-dL-VEc" firstAttribute="top" secondItem="5Mn-Py-zDC" secondAttribute="top" id="26s-aQ-Es8"/>
+                <constraint firstAttribute="trailing" secondItem="vfi-O3-vgz" secondAttribute="trailing" id="0c3-is-bJw"/>
                 <constraint firstItem="lvd-oQ-NXm" firstAttribute="height" secondItem="LzK-iD-Tds" secondAttribute="height" id="2pB-zJ-rPM"/>
                 <constraint firstItem="lvd-oQ-NXm" firstAttribute="leading" secondItem="LzK-iD-Tds" secondAttribute="trailing" id="73B-oy-yHB"/>
                 <constraint firstItem="lvd-oQ-NXm" firstAttribute="width" secondItem="LzK-iD-Tds" secondAttribute="width" id="9Dd-Tl-hGa"/>
                 <constraint firstAttribute="bottom" secondItem="lvd-oQ-NXm" secondAttribute="bottom" id="DAN-9c-JRc"/>
-                <constraint firstItem="5Mn-Py-zDC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="E3c-p4-tZb"/>
                 <constraint firstAttribute="bottom" secondItem="g5V-6f-LJu" secondAttribute="bottom" constant="94" id="Ep9-6C-zq4"/>
+                <constraint firstAttribute="bottom" secondItem="vfi-O3-vgz" secondAttribute="bottom" constant="49" id="HAf-AI-3Dm"/>
                 <constraint firstItem="LzK-iD-Tds" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Isq-GE-0IL"/>
                 <constraint firstAttribute="bottom" secondItem="LzK-iD-Tds" secondAttribute="bottom" id="M47-Bc-90C"/>
-                <constraint firstItem="nOE-7r-wJK" firstAttribute="top" secondItem="g5V-6f-LJu" secondAttribute="bottom" id="MJQ-Jq-bPM"/>
                 <constraint firstAttribute="trailing" secondItem="g5V-6f-LJu" secondAttribute="trailing" id="OMR-R6-Z6T"/>
                 <constraint firstAttribute="trailing" secondItem="lvd-oQ-NXm" secondAttribute="trailing" id="QG2-Pi-NuL"/>
-                <constraint firstItem="lvd-oQ-NXm" firstAttribute="top" secondItem="5Mn-Py-zDC" secondAttribute="bottom" constant="5" id="QaC-pF-wla"/>
-                <constraint firstItem="nOE-7r-wJK" firstAttribute="leading" secondItem="hKf-dL-VEc" secondAttribute="trailing" constant="30" id="RtR-JT-4uq"/>
-                <constraint firstItem="hKf-dL-VEc" firstAttribute="leading" secondItem="5Mn-Py-zDC" secondAttribute="trailing" constant="-440" id="SNB-qE-mdt"/>
-                <constraint firstItem="hKf-dL-VEc" firstAttribute="centerY" secondItem="5Mn-Py-zDC" secondAttribute="centerY" id="XCh-PH-Guf"/>
-                <constraint firstItem="lvd-oQ-NXm" firstAttribute="top" secondItem="nOE-7r-wJK" secondAttribute="bottom" constant="5" id="cK3-jH-Oom"/>
-                <constraint firstItem="hKf-dL-VEc" firstAttribute="height" secondItem="5Mn-Py-zDC" secondAttribute="height" id="cxb-tz-JxM"/>
-                <constraint firstItem="hKf-dL-VEc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="60" id="eEH-aZ-LKz"/>
-                <constraint firstItem="hKf-dL-VEc" firstAttribute="top" secondItem="g5V-6f-LJu" secondAttribute="bottom" id="ffu-aH-p2g"/>
-                <constraint firstAttribute="trailing" secondItem="nOE-7r-wJK" secondAttribute="trailing" constant="5" id="kBc-FJ-Znz"/>
+                <constraint firstItem="vfi-O3-vgz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="e2H-GP-8sg"/>
                 <constraint firstItem="lvd-oQ-NXm" firstAttribute="leading" secondItem="LzK-iD-Tds" secondAttribute="trailing" id="o29-0t-yYt"/>
-                <constraint firstItem="hKf-dL-VEc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="60" id="rRc-Ct-c0i"/>
                 <constraint firstItem="g5V-6f-LJu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="rSE-Ey-0Al"/>
-                <constraint firstItem="nOE-7r-wJK" firstAttribute="leading" secondItem="5Mn-Py-zDC" secondAttribute="trailing" constant="15" id="uaX-b3-8SL"/>
-                <constraint firstItem="5Mn-Py-zDC" firstAttribute="top" secondItem="g5V-6f-LJu" secondAttribute="bottom" id="xIU-Sb-gFW"/>
-                <constraint firstItem="nOE-7r-wJK" firstAttribute="leading" secondItem="hKf-dL-VEc" secondAttribute="trailing" constant="60" id="yb2-ck-3mZ"/>
             </constraints>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="26s-aQ-Es8"/>
-                    <exclude reference="SNB-qE-mdt"/>
-                    <exclude reference="eEH-aZ-LKz"/>
-                    <exclude reference="ffu-aH-p2g"/>
-                    <exclude reference="1QF-39-tCs"/>
-                    <exclude reference="yb2-ck-3mZ"/>
-                </mask>
-            </variation>
+            <point key="canvasLocation" x="355" y="352"/>
         </view>
     </objects>
     <resources>
         <image name="search_btn" width="82" height="38"/>
-        <image name="search_btn_hl" width="80" height="34"/>
         <image name="search_category" width="160" height="40"/>
         <image name="search_category_hl" width="160" height="40"/>
-        <image name="search_inputview" width="203" height="38"/>
         <image name="search_intellegence" width="160" height="40"/>
         <image name="search_intellegence_hl" width="160" height="40"/>
     </resources>

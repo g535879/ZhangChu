@@ -14,9 +14,14 @@
  *  搜索表格视图
  */
 @property (weak, nonatomic) IBOutlet UITableView *searchTableView;
-
+/**
+ *  搜索栏背景图层
+ */
+@property (weak, nonatomic) IBOutlet UIView *bottomSearchView;
 /**
  *  当前IP
  */
 @property (nonatomic, copy) NSString * hostIP;
+
+
 @end

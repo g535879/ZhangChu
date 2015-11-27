@@ -10,6 +10,10 @@
 #import "SearchCategoryModel.h"
 #import "SearchCategoryDetailModel.h"
 #import "SearchDetailTableViewCell.h"
+#import "SearchResultViewController.h"
+
+#import "SearchResultModel.h"
+
 //头视图
 #import "SearchHeadView.h"
 
@@ -36,6 +40,15 @@
  *  存放数据容器
  */
 @property (strong, nonatomic) NSMutableArray * searchDataArray;
+/**
+ *  搜索文本框
+ */
+@property (weak, nonatomic) IBOutlet UITextField *searchTextField;
+
+/**
+ *  搜索按钮点击
+ */
+- (IBAction)SearchBtnClick;
 
 @end
 
@@ -95,9 +108,27 @@
     }];
     
     self.searchTableView.tableHeaderView = self.headView;
-    [self.searchTableView setBackgroundColor:[UIColor blueColor]];
     //注册tableview  cell
     [self.searchTableView registerNib:[UINib nibWithNibName:@"SearchDetailTableViewCell" bundle:nil] forCellReuseIdentifier:@"cellReuseIdentifier"];
+    
+    //底部搜索框
+    [self.view bringSubviewToFront:self.bottomSearchView];
+    
+    //设置搜索背景图片拉伸
+    UIButton * btn = (UIButton *)[self.bottomSearchView.subviews objectAtIndex:1];
+    if ([btn respondsToSelector:@selector(setBackgroundImage:forState:)]) {
+        [btn setBackgroundImage:[imageStar(@"search_inputview") stretchableImageWithLeftCapWidth:40.0f topCapHeight:0] forState:UIControlStateNormal];
+    }
+    
+    //背景色
+    [self.bottomSearchView setBackgroundColor:[UIColor colorWithPatternImage:imageStar(@"homeview_bg")]];
+//    [self.bottomSearchView setBackgroundColor:[UIColor blueColor]];
+    
+    //监听键盘弹起通知
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardShow:) name:UIKeyboardDidShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardHidden:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 #pragma mark - tableView delegate
@@ -327,7 +358,123 @@
     return YES;
 }
 
+
+
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    
     return YES;
+}
+
+#pragma mark - 通知中心。键盘弹起
+
+- (void)keyBoardShow : (NSNotification *)notification{
+    
+    if (self.searchTextField.isFirstResponder) {
+        
+        CGRect keyBoardRect = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+
+        CGRect searchViewFrame = self.bottomSearchView.frame;
+        
+        NSLog(@"%@",NSStringFromCGRect(searchViewFrame));
+        searchViewFrame.origin.y -= keyBoardRect.size.height;
+        searchViewFrame.origin.y += 49;
+        UIButton * btn = self.bottomSearchView.subviews[1];
+        if (btn.selected) {
+            return;
+        }
+        btn.selected = YES;
+        self.bottomSearchView.frame = searchViewFrame;
+    }
+    
+}
+
+#pragma mark - 通知中心。 键盘回收
+- (void)keyBoardHidden:(NSNotification *)notification {
+    [self.searchTextField becomeFirstResponder];
+    
+    CGRect keyBoardRect = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGRect searchViewFrame = self.bottomSearchView.frame;
+    searchViewFrame.origin.y += keyBoardRect.size.height ;
+    searchViewFrame.origin.y -= 49;
+    
+    self.bottomSearchView.frame = searchViewFrame;
+    UIButton * btn = self.bottomSearchView.subviews[1];
+    btn.selected = NO;
+}
+
+#pragma mark - 搜索按钮点击
+
+- (IBAction)SearchBtnClick {
+    
+    [self.view endEditing:YES];
+    NSString * searchKey = self.searchTextField.text;
+
+    NSMutableString * requestUrl = [@"" mutableCopy];
+    
+    NSString * path = [[NSBundle mainBundle] pathForResource:@"SearchCategorys" ofType:@"plist"];
+    NSDictionary * plistDic = [NSDictionary dictionaryWithContentsOfFile:path];
+    
+    for (int i = 0 ; i < self.cellSelectedName.count; i++) {
+        NSString * cStr = [self.cellSelectedName objectAtIndex:i];
+        if (i == 0 && cStr.length) {
+            cStr = [cStr stringByAppendingString:@"菜"];
+        }
+        [requestUrl appendFormat:@"&%@=%@",plistDic[@"order_titles"][i],cStr];
+    }
+    
+    //拼接url
+    NSString  * urlStr = [NSString stringWithFormat:
+                          @"%@"
+                          "%@"
+                          "&name=%@"
+                          "&user_id=0"
+                          "&is_traditional=0"
+                          "&page=1"
+                          "&pageRecord=10"
+                          "&is_traditional=0"
+                          "&phonetype=1",URL_VEGETABLE_INFO,requestUrl,searchKey];
+    //网络请求
+    
+    __weak SearchViewController *weakSelf = self;
+    
+    [self loadDataByUrl:[urlStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]] withdataBlock:^(id successData) {
+        id jsonObj = [NSJSONSerialization JSONObjectWithData:successData options:NSJSONReadingMutableContainers error:nil];
+        
+        //有结果
+        if ([jsonObj[@"status"] isEqualToString:@"0"]) {
+            
+            NSMutableArray * resultArray = [@[] mutableCopy];
+            for (NSDictionary * dic in jsonObj[@"data"]) {
+                SearchResultModel * model = [[SearchResultModel alloc] init];
+                [model setValuesForKeysWithDictionary:dic];
+                [resultArray addObject:model];
+            }
+        
+            
+            SearchResultViewController * svc = [[SearchResultViewController alloc] initWithNibName:@"SearchResultViewController" bundle:nil];
+            
+            if ([svc isKindOfClass:[SearchResultViewController class]]) {
+                
+                [svc setTitle:@"搜索结果"];
+                svc.dataArray = resultArray;
+                
+                if (self.searchTextField.text) {
+                    svc.orderName = self.searchTextField.text;
+                }
+                svc.keysArray = self.cellSelectedName;
+                svc.urlStr = urlStr;
+                [weakSelf.navigationController pushViewController:svc animated:YES];
+            }
+           
+            
+        }
+        else{
+            [self showMyAlertView:jsonObj[@"message"]];
+        }
+        
+    } withFailure:^(NSError *error) {
+        [self showMyAlertView:@"网络请请求失败"];
+        NSLog(@"%@",error);
+    }];
 }
 @end

@@ -33,6 +33,10 @@
 
 #import "UIViewController+AlertView.h"
 
+#import "MJRefresh.h"
+
+#import "RegHelper.h"
+
 #define viewControllerTitleString @"掌厨 - 全球最大的视频厨房"
 
 #define notNetWorkString @"暂无网络,请检查网络状态"
@@ -67,6 +71,7 @@
 
 //缩放比例尺
 #define scale_screen (screen_Width / iphone6P)
+
 
 
 #endif
