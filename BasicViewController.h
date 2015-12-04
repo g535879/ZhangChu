@@ -31,8 +31,10 @@ typedef void (^FailureCallBackData)(NSError *error);
  */
 
 - (void)setNavTitle:(NSString *)str;
-
-
+/**
+ *  加载框
+ */
+@property (strong, nonatomic) JGProgressHUD * hud; 
 /**
     设置背景色
  */
@@ -53,4 +55,9 @@ typedef void (^FailureCallBackData)(NSError *error);
  *  左侧导航返回按钮
  */
 - (void)leftNavItem;
+
+/**
+ *  返回键点击
+ */
+- (void)leftNavItemClick;
 @end

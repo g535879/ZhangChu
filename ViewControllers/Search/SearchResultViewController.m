@@ -10,6 +10,7 @@
 #import "UIAlertView+Blocks.h"
 #import "SearchResultModel.h"
 #import "SearchResultCollectionViewCell.h"
+#import "VideoPlayViewController.h"
 
 @interface SearchResultViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 
@@ -167,9 +168,14 @@
     
     SearchResultCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
     
-    SearchResultModel * model = self.dataArray[indexPath.row];
-    [cell.cookImageView setImageWithURL:[NSURL URLWithString:model.imagePathThumbnails]];
-    [cell.cookName setText:model.name];
+    //防止加载过程中刷新数据源崩溃
+    if (indexPath.row < self.dataArray.count) {
+        
+        SearchResultModel * model = self.dataArray[indexPath.row];
+        [cell.cookImageView setImageWithURL:[NSURL URLWithString:model.imagePathThumbnails]];
+        [cell.cookName setText:model.name];
+    }
+   
     return cell;
     
 }
@@ -182,6 +188,13 @@
 
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    VideoPlayViewController * vvc = [[VideoPlayViewController alloc] init];
+    SearchResultModel * model = self.dataArray[indexPath.row];
+    vvc.videoName = model.name;
+    vvc.imageUrl = model.imagePathThumbnails;
+    vvc.vegetableId = model.vegetable_id;
+    [self.navigationController pushViewController:vvc animated:YES];
+    
 }
 
 

@@ -8,9 +8,7 @@
 
 #import "BasicViewController.h"
 
-@interface BasicViewController ()
-
-@property (strong, nonatomic) JGProgressHUD * hud; // 加载框
+@interface BasicViewController ()<UIGestureRecognizerDelegate>
 
 @end
 
@@ -18,16 +16,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    [DBManager shareManager];
+    
     [self.navigationController.navigationBar setBarTintColor:[UIColor orangeColor]];
+
     
     self.navigationController.navigationBar.translucent = NO;
     
     if (isiOS7) {
+        
         //白色标题
         [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
         
     }
+
     //检测网络状态
     [self checkNetWork];
     
@@ -116,19 +118,25 @@
 
 - (void)loadDataByUrl:(NSString *)urlStr withdataBlock:(SuccessCallBackData)success withFailure:(FailureCallBackData)failure {
     
+    //状态栏显示加载框
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    
     //显示加载框
-    [self.hud showInView:self.view];
+    [self.hud showInRect:CGRectMake(0, 0, screen_Width, screen_Height) inView:self.view]; //放置autolayout导致显示不正确
     
     [NetManager loadDataWithUrlStr:urlStr block:^(id successData) {
         //隐藏加载框
         [self.hud dismissAnimated:YES];
-        
+        //状态栏关闭加载框
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         success(successData);
         
     } withFaile:^(NSError *error) {
         
         //隐藏加载框
         [self.hud dismissAnimated:YES];
+        //状态栏关闭加载框
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         failure(error);
     }];
 }

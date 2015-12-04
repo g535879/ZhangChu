@@ -8,27 +8,56 @@
 
 #import "MyNavigationController.h"
 
-@interface MyNavigationController ()
-
+@interface MyNavigationController ()<UIGestureRecognizerDelegate>
+/**
+ *  当前根视图控制器
+ */
+@property (weak, nonatomic) UIViewController * rootVC;
 @end
 
 @implementation MyNavigationController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+}
 
-    // Do any additional setup after loading the view.
+
+- (instancetype)initWithRootViewController:(UIViewController *)rootViewController {
+    self = [super initWithRootViewController:rootViewController];
+    if (self) {
+        
+        self.interactivePopGestureRecognizer.delegate = self;
+        self.rootVC = rootViewController;
+    }
+    
+    return self;
+}
+
+/**
+ *  确定手势是否有效
+ *
+ *  @param gestureRecognizer
+ *
+ *  @return
+ */
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    
+    return !(self.rootVC == self.topViewController);
+}
+
+
+
+
+//状态栏颜色
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    
-    return UIStatusBarStyleLightContent;
 }
 
 /*

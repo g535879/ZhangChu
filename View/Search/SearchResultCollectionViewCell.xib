@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -27,6 +27,9 @@
                         <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video_play" translatesAutoresizingMaskIntoConstraints="NO" id="tI2-XA-vAu" userLabel="forwardImageView">
+                        <rect key="frame" x="0.0" y="0.0" width="253" height="141"/>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
@@ -34,7 +37,11 @@
                 <constraint firstItem="MK9-Rn-wXj" firstAttribute="leading" secondItem="w9i-68-5cy" secondAttribute="leading" id="0Em-eB-AII"/>
                 <constraint firstItem="1Om-6b-gMz" firstAttribute="leading" secondItem="w9i-68-5cy" secondAttribute="leading" id="4f6-O2-5iR"/>
                 <constraint firstAttribute="trailing" secondItem="1Om-6b-gMz" secondAttribute="trailing" id="5bO-0e-A8J"/>
+                <constraint firstItem="tI2-XA-vAu" firstAttribute="top" secondItem="w9i-68-5cy" secondAttribute="top" id="7gC-Cq-Cpw"/>
+                <constraint firstItem="1Om-6b-gMz" firstAttribute="top" secondItem="tI2-XA-vAu" secondAttribute="bottom" id="Cee-dM-3A1"/>
+                <constraint firstItem="tI2-XA-vAu" firstAttribute="leading" secondItem="w9i-68-5cy" secondAttribute="leading" id="Wkk-Il-JEq"/>
                 <constraint firstAttribute="trailing" secondItem="MK9-Rn-wXj" secondAttribute="trailing" id="Ywp-L1-wuX"/>
+                <constraint firstAttribute="trailing" secondItem="tI2-XA-vAu" secondAttribute="trailing" id="dLP-GH-9nJ"/>
                 <constraint firstAttribute="bottom" secondItem="1Om-6b-gMz" secondAttribute="bottom" id="det-Cs-lVZ"/>
                 <constraint firstItem="MK9-Rn-wXj" firstAttribute="top" secondItem="w9i-68-5cy" secondAttribute="top" id="hHl-7E-sjK"/>
                 <constraint firstItem="1Om-6b-gMz" firstAttribute="top" secondItem="MK9-Rn-wXj" secondAttribute="bottom" id="nPF-ot-qxN"/>
@@ -47,4 +54,7 @@
             <point key="canvasLocation" x="338.5" y="132.5"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="video_play" width="30" height="30"/>
+    </resources>
 </document>

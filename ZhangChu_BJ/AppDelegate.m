@@ -92,4 +92,22 @@
     return main;
 }
 
+
+
+
+
+
+-(UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+
+{
+    
+    if (self.allowRotation) {
+        
+        return UIInterfaceOrientationMaskPortrait |UIInterfaceOrientationMaskLandscapeLeft |UIInterfaceOrientationMaskLandscapeRight;
+        
+    }
+    
+    return UIInterfaceOrientationMaskPortrait;
+    
+}
 @end

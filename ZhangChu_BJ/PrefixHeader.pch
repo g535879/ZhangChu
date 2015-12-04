@@ -37,6 +37,8 @@
 
 #import "RegHelper.h"
 
+#import "DBManager.h"
+
 #define viewControllerTitleString @"掌厨 - 全球最大的视频厨房"
 
 #define notNetWorkString @"暂无网络,请检查网络状态"

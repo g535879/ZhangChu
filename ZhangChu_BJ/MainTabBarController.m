@@ -21,8 +21,20 @@ MainTabBarController ()
 }
 
 
+//自动控制屏幕旋转
+- (BOOL)shouldAutorotate {
+    
+    return NO;
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    if (self.tabBar.subviews.count > 4) {
+        
+        return;
+    }
+    
     for (UIView *v in self.tabBar.subviews) {
         v.hidden = YES;
     }
